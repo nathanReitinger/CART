@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+    
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" rel="stylesheet">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+
+</head>
+<body>  
+    <header>
+        <div class="icon-bar">
+            <a data-tooltip="Home" data-tooltip-location="right" href="{{ url_for('index') }}"><img class="zoom" src = "/static/media/home.png" alt = "home" width = "50" height = "50"/></a>
+            <a data-tooltip="Progress" data-tooltip-location="right" id="progress" href="{{ url_for('visualize') }}"><img class="zoom" src = "/static/media/progress.png" alt = "progress" width = "50" height = "50"/></a>
+            <a data-tooltip="History" data-tooltip-location="right" id="history" href="{{ url_for('history') }}"><img class="zoom" src = "/static/media/history.png" alt = "history" width = "50" height = "50"/></a> 
+            <a data-tooltip="About" data-tooltip-location="right" href="{{ url_for('info') }}"><img class="zoom" src = "/static/media/about.png" alt = "about" width = "50" height = "50"/></a>
+            <a data-tooltip="Account" data-tooltip-location="left" href="{{ url_for('startSelector') }}"><img class="zoom" src = "/static/media/account.png" alt = "account" width = "50" height = "50"/></a>
+        </div>
+    </header>
+
+
+            
+    <main>
+        <article>
+            <!-- <h1 id="user_exists">Current user: {{ value }}</h1> -->
+
+
+                <div class="container2">
+                    <div id='logged_in_user' class="box1 box">
+                        <div class="caption-box">
+                            <img class="zoom" src = "/static/media/heart.png" alt = "heart" width = "50" height = "50"/>
+                            <div class="caption">
+                                <div id="user_exists">
+                                    <h5>USER</h5>
+                                    <p>{{ value | safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id='login_notification' class="box1 box">
+                        <div class="caption-box">
+                            <img class="zoom" src = "/static/media/account.png" alt = "heart" width = "50" height = "50"/>
+                            <div class="caption">
+                                <div id="user_exists">
+                                    <h5><h1 id="result" style="font-size:  18px; color: #89CFF0; font-weight: normal;">Please select your username below:</h1> </h5>
+
+                                    <form method="post" action="/start" id="form_to_get_user" onsubmit="return validate(this);" >
+                                        <select id="operator" name="operator">
+                                            <option value="">
+                                            {{ coders | safe}}
+
+                                        </select>
+                                        <input type="submit" value="Submit">
+                                    </form> 
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div id='logout_notification' class="box2 box">
+                        <div class="caption-box">
+                            <img class="zoom" src = "/static/media/logout.png" alt = "logout" width = "50" height = "50"/>
+                            <div class="caption">
+                                <h5>LOGOUT</h5>
+                                <p> logout here: <input type = "button" id = "logout" value = "logout!"/> </p> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='reset_notification' class="box2 box">
+                        <div class="caption-box">
+                            <img class="zoom" style="filter: saturate(3);"src = "/static/media/error.png" alt = "logout" width = "50" height = "50"/>
+                            <div class="caption">
+                                <h5>RESET ALL DATA</h5>
+                                <p> Reset all users and data, click here: <input type = "button" id = "reset" value = "reset!"/> </p> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='current_title_notification'class="box1 box">
+                        <div class="caption-box">
+                            <img class="zoom" src = "/static/media/stats.png" alt = "stats" width = "50" height = "50"/>
+                            <div class="caption">
+                                <div id="user_exists">
+                                    <h5>Title of curret paper</h5>
+                                    <p>{{ curr_title | safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id='papers_coded_so_far_notification' class="box1 box">
+                        <div class="caption-box">
+                            <img class="zoom" src = "/static/media/stats.png" alt = "stats" width = "50" height = "50"/>
+                            <div class="caption">
+                                <div id="user_exists">
+                                    <h5>Reviews so far: {{ curr_counter | safe }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+        </article>
+        
+    </main>
+
+    <div id="loader"><div>
+    <div id="loader2"><div>
+</body>   
+
+<script>
+    var check_done = document.getElementById('user_exists').innerHTML;
+    if (!check_done.includes("--empty--")) {
+        document.getElementById('form_to_get_user').style.visibility = 'hidden';
+        document.getElementById('result').style.visibility = 'hidden';
+
+        // drop login button 
+        const login_n = document.getElementById("login_notification");
+        login_n.remove(); 
+
+    } else {
+        document.getElementById('logout').style.visibility = 'hidden';
+
+
+        // dorp notification on this user
+        const this_user = document.getElementById("logged_in_user");
+        this_user.remove(); 
+
+        // drop logout button 
+        const logout_n = document.getElementById("logout_notification");
+        logout_n.remove(); 
+
+        // drop stats
+        const current_title = document.getElementById("current_title_notification");
+        current_title.remove(); 
+        const papers_coded_so_far = document.getElementById("papers_coded_so_far_notification");
+        papers_coded_so_far.remove(); 
+    }
+
+</script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+<script type=text/javascript> 
+    function show_loader(){
+        $("#loader").addClass("loader");
+    }
+
+    $(document).ready( function() {
+        $('#logout').click(function(event) {
+            show_loader();
+            $.post(
+                "/logout",
+                {}
+            ).done(function (reply) {
+                console.log("DONE logging you out!")
+                // document.getElementById('user_exists_alternative_statement').innerHTML = "DONE!";
+                document.getElementById('user_exists').style.visibility = 'hidden';
+                document.getElementById('logout').style.visibility = 'hidden';
+                location.reload();
+            });
+        });
+
+        $('#reset').click(function(event) {
+            if (confirm('Reset will remove all existing votes. Are you sure?')) {
+                document.body.innerHTML = `
+
+                    <div class="loader_exit">
+                      <div class="loader_exit__container">
+                        <p class="loader_exit__container__text">
+                          Reset:
+                        </p>
+                        
+                        <ul class="loader_exit__container__list">
+                          <li class="loader_exit__container__list__item">users </li>
+                          <li class="loader_exit__container__list__item">abstracts </li>
+                          <li class="loader_exit__container__list__item">ngrok </li>
+                          <li class="loader_exit__container__list__item">everything!</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    `;
+                $.post(
+                    "/reset_all_data",
+                    {}
+                );
+            } else {
+                
+            }
+
+        });
+
+
+    });
+</script> 
+<script>
+function validate(form) {
+    // console.log(this)
+    var e = document.getElementById("operator");
+    var value = e.options[e.selectedIndex].value;
+    var text = e.options[e.selectedIndex].text;
+    // console.log(text)
+
+    if (text.length < 1) {
+        alert("no one here ")
+        return false 
+    } else{
+        return //confirm('You selected ----> ' + text + ' <---- is that right?');
+    }
+}
+</script>
+<script>
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+    alert("⚠️ This website does not work on mobile, please use another device!")
+    document.getElementById('form_to_get_user').style.visibility = 'hidden'; 
+    document.getElementById('result').innerHTML = 'Please use another device besides mobile. Contant your administrator if you think this is in error.'; 
+    
+} 
+</script>
+
+<script type=text/javascript> 
+    function show_loader2(){
+        $("#loader2").addClass("loader");
+    }
+
+    $(document).ready( function() {
+        $('#progress').click(function(event) {
+            show_loader2();
+        });
+        $('#history').click(function(event) {
+            show_loader2();
+        });
+    });
+</script> 
+
+</html>

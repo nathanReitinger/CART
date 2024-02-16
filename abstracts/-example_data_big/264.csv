@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+264,0,https://doi.org/10.1145/3243734.3278497,Audio Hotspot Attack: An Attack on Voice Assistance Systems Using Directional Sound Beams,"
+		<p>We propose a novel attack named ""Audio Hotspot Attack'', which performs an inaudible malicious voice command attack, targeting voice assistance systems, e.g., smart speakers or in-car navigation systems. This attack leverages directional sound beams generated from parametric loudspeakers, which emit AM-modulated ultrasounds that will be self-demodulated in the air. It can succeed in the attack on a long distance (2--4 meters in a small room and 10+ meter in a long hallway). To evaluate the feasibility of the attack, we performed extensive in-lab experiments and a user study involving 20 participants. The results demonstrate that the attack is feasible in a real-world setting.</p>
+	------endofabstract------264",none,none,no,1691766425.810045

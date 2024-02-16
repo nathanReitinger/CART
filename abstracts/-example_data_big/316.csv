@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+316,0,https://doi.org/10.1145/3548606.3563529,Poster: MUSTARD - Adaptive Behavioral Analysis for Ransomware Detection,"
+		<p>Behavioural analysis based on filesystem operations is one of the most promising approaches for the detection of ransomware. Nonetheless, tracking all the operations on all the files for all the processes can introduce a significant overhead on the monitored system. We present MUSTARD, a solution to dynamically adapt the degree of monitoring for each process based on their behaviour to achieve a reduction of monitoring resources for the benign processes.</p>
+	------endofabstract------316",none,none,no,1691766425.916464

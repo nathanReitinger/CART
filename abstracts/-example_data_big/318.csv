@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+318,0,https://doi.org/10.1145/3548606.3563554,AMSec'22: ACM CCS Workshop on Additive Manufacturing (3D Printing) Security,"
+		<p>While Security is universally needed, it is rarely plug-and-play. The new domain of Additive Manufacturing (a.k.a. 3D Printing) Security requires novel solutions to its unique security concerns. This workshop brings together researchers and practitioners working in this highly inter-disciplinary research field and closely related areas.</p>
+	------endofabstract------318",none,none,no,1691766425.920498

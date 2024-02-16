@@ -1,0 +1,516 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" rel="stylesheet">  
+        <link href="https://fonts.cdnfonts.com/css/roslindale" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+        <link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet">
+        <script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-confetti@0.10.1/dist/js-confetti.browser.js"></script>
+        <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.7.0/dist/progressbar.js"></script>
+    </head>
+
+<body>
+    <header>
+        <div class="icon-bar" id="icons" >
+            <a data-tooltip="Home" data-tooltip-location="right" href="{{ url_for('index') }}"><img class="zoom" src = "/static/media/home.png" alt = "home" width = "50" height = "50"/></a>
+            <a data-tooltip="Progress" data-tooltip-location="right" id="progress" href="{{ url_for('visualize') }}"><img class="zoom" src = "/static/media/progress.png" alt = "progress" width = "50" height = "50"/></a>
+            <a data-tooltip="History" data-tooltip-location="right" id="history" href="{{ url_for('history') }}"><img class="zoom" src = "/static/media/history.png" alt = "history" width = "50" height = "50"/></a> 
+            <a data-tooltip="About" data-tooltip-location="right" href="{{ url_for('info') }}"><img class="zoom" src = "/static/media/about.png" alt = "about" width = "50" height = "50"/></a>
+            <a data-tooltip="Account" data-tooltip-location="left" href="{{ url_for('startSelector') }}"><img class="zoom" src = "/static/media/account.png" alt = "account" width = "50" height = "50"/></a>
+        </div>
+    </header>
+
+    <main>
+        <!-- <button id="confetti_button">Click me!</button>
+        <canvas id="custom_canvas"></canvas> -->
+        
+
+
+        <article id="result2">
+            
+            <div style="font-size:45px;text-align:right;visibility: visible;" id="ticker" class="tick"
+                data-value={{counter}}
+                
+                data-did-init="setupFlip">
+                <div data-repeat="true" aria-hidden="true">
+                    <span data-view="flip"></span>
+                </div>
+                
+            </div>
+            <div style="margin-bottom:0em; right:0;" id="container"></div>
+            <br/>
+
+            <h_title id="title"> {{ title | safe }} </h_title>
+            <br/><br/><br/>
+            <div id="result"><div>{{ abstract | safe }}</div></div>
+            <div id='other_check'><div>{{ other_coders_have_what_left | safe }}</div></div>
+            <br/><br/><br/>
+            <p id="url"> {{ url }} </p>
+
+        </article>
+
+    </main>
+    
+    <footer id="vote_buttons">
+        <input type = "button" id = "yes_relevant" value = "yes, is relevant" class="button button_yes"/>
+        <input type = "button" id = "no_relevant" value = "no, not relevant" class="button button_no"/>    
+        <input type = "button" id = "not_a_paper" value = "not_a_paper" class="button button_other"/>  
+    </footer>
+
+
+    <div class="modal-container">
+        <div class="modal-overlay modal-exit"></div>
+        <div class="modal">
+            <span class="modal-exit">&times;</span>
+            <div>
+            <h1 id="modal_confirm">--</h1>
+            </div>
+        </div>
+    </div>
+
+    <div id="loader"><div></div></div>
+    <div id="loader2"><div></div></div>
+
+    <br/>
+
+    <div class="sidebar">
+        <p class="round3">
+            <button data-tooltip="No counter" data-tooltip-location="right" id="hideCounter" style="font-size:10px;border-radius: 50%;border: 1px solid red;background:#D3D3D3" onclick="hideMe()">x</button>
+            <br/>
+            <button data-tooltip="Focus!" data-tooltip-location="right" id="hideAll" style="font-size:10px;border-radius: 50%;border: 1px solid rgb(0, 0, 0);background:#ffffff" onclick="hideAll()"><i>f</i></button>
+            <br/>
+            <input id="myInput" maxlength="5" size="3" type="text" value={{ goals }}>
+            <br/>
+            <button data-tooltip="Set goal!" data-tooltip-location="right" id="myButton" type="button">Goal!</button>
+            <div style="visibility:hidden" id="user_goals"> {{ goals }} </div>
+            <div style="visibility:hidden" id="user_so_far"> {{ dones }} </div>
+        </p>
+    </div>
+
+
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+<script type=text/javascript> 
+
+    const jsConfetti = new JSConfetti()
+
+    function show_loader(){
+        $("#loader").addClass("dots-bars-5");
+    }
+    function hide_loader(){
+        $("#loader").removeClass("dots-bars-5");
+    }
+    function wait(ms){
+        var start = new Date().getTime();
+        var end = start;
+        while(end < start + ms) {
+            end = new Date().getTime();
+        }
+    }
+
+    // progress bar: https://kimmobrunfeldt.github.io/progressbar.js/
+    let circle = null
+    function refreshCircle(percentage) {
+        if (!circle) {
+            circle = new ProgressBar.Circle(container, {
+            color: '#aaa',
+            // This has to be the same size as the maximum width to
+            // prevent clipping
+            strokeWidth: 4,
+            trailWidth: 1,
+            easing: 'easeInOut',
+            duration: 1400,
+            text: {
+                autoStyleContainer: false
+            },
+            from: { color: '#FFEA82', width: 1 },
+            to: { color: '#ED6A5A', width: 1 },
+            // Set default step function for all animate calls
+            step(state, circle) {
+                circle.path.setAttribute('stroke', state.color);
+                circle.path.setAttribute('stroke-width', state.width);
+
+                const value = Math.round(circle.value() * 100);
+                if (value === 0) {
+                    circle.setText('');
+                } else {
+                    circle.setText(value + "%");
+                }
+                circle.text.style.color = state.color;
+            }
+            });
+            // circle.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+            // circle.text.style.fontSize = '2rem';
+        }
+        circle.animate(percentage);
+    }
+
+    var curr_goal = parseInt(document.getElementById('user_goals').innerHTML)
+    var curr_dones = parseInt(document.getElementById('user_so_far').innerHTML)
+    // console.log("goals, current goal " + curr_goal)
+    // console.log("goals, done abstracts " + curr_dones)
+    if (curr_goal > 0) {
+        refreshCircle(curr_dones / curr_goal)
+    }
+
+    $('#myButton').on('click', function() {
+        var text = $('#myInput').val();
+        var user_goals = text
+        if (user_goals > 0) {
+            // refreshCircle(0.1)
+            document.getElementById('container').style.display = "block";
+            var this_session_done = 0 //(0 / 100).toFixed(2)
+            setTimeout(() => refreshCircle(1.0), 500)
+            setTimeout(() => refreshCircle(this_session_done / user_goals), 2000)
+            // refreshCircle(this_session_done / user_goals)
+            document.getElementById('user_goals').innerHTML = user_goals;
+            document.getElementById('user_so_far').innerHTML = 0;
+        } else{
+            document.getElementById('container').style.display = "none";
+            document.getElementById('user_goals').innerHTML = 0;
+            document.getElementById('user_so_far').innerHTML = 0;
+
+            $.ajax({
+                url : '/log_progress',
+                type : 'POST',
+                data :  { },   
+                tryCount : 0,
+                retryLimit : 10,
+                success : function(reply) {
+                    console.log("DONE logging goal setting!")
+                },
+                error : function(xhr, textStatus, errorThrown ) {
+                    if (textStatus == 'timeout') {
+                        this.tryCount++;
+                        if (this.tryCount <= this.retryLimit) {
+                            //try again
+                            $.ajax(this);
+                            return;
+                        }            
+                        return;
+                    }
+                    if (xhr.status == 500) {
+                        //handle error
+                        alert("[progress log fail] try refreshing the page!")
+                    } else {
+                        //handle error
+                        alert("[progress log fail] try refreshing the page!")
+                    }
+                }
+            });
+
+        }
+
+    })
+
+    // setTimeout(() => refreshCircle(1.0), 2000)
+
+    // send vote and abstract_id to server to log vote and get new abstract to grade
+    function send_data(the_id_of_this_abstract, vote, goals, dones) {
+        // console.log("[send_data]")
+        // console.log(the_id_of_this_abstract)
+        // console.log(vote)
+
+        $.ajax({
+            url : '/serviceidlookup',
+            type : 'POST',
+            data :  { serviceid: the_id_of_this_abstract, answer: vote, users_goals: goals, dones: dones},   
+            tryCount : 0,
+            retryLimit : 5,
+            success : function(reply) {
+                // console.log("DONE logging")
+                const parser = new DOMParser();
+                const htmlDoc = parser.parseFromString(reply, 'text/html');
+                var new_abstract = htmlDoc.getElementById("result").innerHTML
+                document.getElementById("result").innerHTML = new_abstract;
+                var new_others_check = htmlDoc.getElementById("other_check").innerHTML;
+                document.getElementById("other_check").innerHTML = new_others_check;
+                var new_title = htmlDoc.getElementById("title").innerHTML
+                document.getElementById("title").innerHTML = new_title;
+                var new_url = htmlDoc.getElementById("url").innerHTML
+                document.getElementById("url").innerHTML = new_url;
+                var new_tick = htmlDoc.getElementById("ticker").getAttribute('data-value')
+                // console.log(new_tick)
+                var curr_tick = document.getElementById("ticker")
+                curr_tick.setAttribute('data-value', new_tick)
+                hide_loader();
+                var users_old_goal = htmlDoc.getElementById("user_goals").innerHTML
+                var users_old_dones = parseInt(htmlDoc.getElementById("user_so_far").innerHTML)
+                
+                if (users_old_goal > 0) {
+                    // users_old_dones += 1
+                    // console.log(users_old_dones)
+                    // console.log(this_session_done)
+                    document.getElementById("user_so_far").innerHTML = users_old_dones;
+                    refreshCircle(users_old_dones / users_old_goal)
+                }
+
+                // console.log("old goal " + users_old_goal)
+                // console.log("old dones " + users_old_dones)
+
+                var options = ['🦄', '🪩', '🐸', '🧚', '🤸', '🔥', '🌈', '⚡️']
+                var item1 = options[Math.floor(Math.random()*options.length)];
+                var item2 = options[Math.floor(Math.random()*options.length)];
+                var item3 = options[Math.floor(Math.random()*options.length)];
+                if (new_tick % {{confetti | safe}} == 0 || new_abstract.includes(":)")){
+                    jsConfetti.addConfetti({
+                        emojis: [item1, item2, item3],
+                        emojiSize: 75,
+                        confettiNumber: 500,
+                    })
+                    
+                }
+            },
+            error : function(xhr, textStatus, errorThrown ) {
+                if (textStatus == 'timeout') {
+                    this.tryCount++;
+                    if (this.tryCount <= this.retryLimit) {
+                        //try again
+                        $.ajax(this);
+                        return;
+                    }            
+                    return;
+                }
+                if (xhr.status == 500) {
+                    //handle error
+                    alert("try refreshing the page, make sure it is on https!")
+                } else {
+                    //handle error
+                    alert("try refreshing the page, make sure it is on https!")
+                }
+            }
+        });
+    }
+
+
+    $(document).ready( function() {
+        $('#yes_relevant').click(function(event) {
+            show_loader();
+            document.getElementById("modal_confirm").innerText = "Yes";
+            setTimeout(function(){
+                document.querySelector(".modal-container").classList.remove("fade-in");
+            }, 1000);
+            document.querySelector(".modal-container").classList.add("fade-in");
+            try {
+                var the_id_of_this_abstract = $("#result").text().split("------endofabstract------")[1].trim();
+            } catch (error){
+                try {
+                    var the_id_of_this_abstract = $("#result2").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                    // console.log("error and attempt2 with result2 tag")
+                    // console.log(error)
+                } catch {
+                    var the_id_of_this_abstract = $("body").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                }
+            }
+            var curr_goals = document.getElementById('user_goals').innerHTML;
+            var curr_dones = document.getElementById('user_so_far').innerHTML;    
+            send_data(the_id_of_this_abstract, 'yes, is relevant', curr_goals, curr_dones)
+        });
+
+        $('#no_relevant').click(function(event) {
+            show_loader();
+            document.getElementById("modal_confirm").innerText = "No";
+            setTimeout(function(){
+                document.querySelector(".modal-container").classList.remove("fade-in");
+            }, 1000);
+            document.querySelector(".modal-container").classList.add("fade-in");
+            try {
+                var the_id_of_this_abstract = $("#result").text().split("------endofabstract------")[1].trim();
+            } catch (error){
+                try {
+                    var the_id_of_this_abstract = $("#result2").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                    // console.log("error and attempt2 with result2 tag")
+                    // console.log(error)
+                } catch {
+                    var the_id_of_this_abstract = $("body").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                }
+            } 
+            var curr_goals = document.getElementById('user_goals').innerHTML;
+            var curr_dones = document.getElementById('user_so_far').innerHTML; 
+            send_data(the_id_of_this_abstract, 'no, not relevant', curr_goals, curr_dones)   
+        });
+
+        $('#not_a_paper').click(function(event) {
+            show_loader();
+            document.getElementById("modal_confirm").innerText = "not_a_paper";
+            setTimeout(function(){
+                document.querySelector(".modal-container").classList.remove("fade-in");
+            }, 1000);
+            document.querySelector(".modal-container").classList.add("fade-in");
+            try {
+                var the_id_of_this_abstract = $("#result").text().split("------endofabstract------")[1].trim();
+            } catch (error){
+                try {
+                    var the_id_of_this_abstract = $("#result2").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                    // console.log("error and attempt2 with result2 tag")
+                    // console.log(error)
+                } catch {
+                    var the_id_of_this_abstract = $("body").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                }
+            }   
+            var curr_goals = document.getElementById('user_goals').innerHTML;
+            var curr_dones = document.getElementById('user_so_far').innerHTML; 
+            send_data(the_id_of_this_abstract, 'not_a_paper', curr_goals, curr_dones)       
+        });
+
+    });
+
+    // Add event listener on keypress
+    document.addEventListener('keyup', (event) => {
+        var name = event.key;
+        var code = event.code;
+        // Alert the key name and key code on keydown
+        if (name == 'y') {
+            // same as above for click
+            show_loader();
+            document.getElementById("modal_confirm").innerText = "Yes";
+            setTimeout(function(){
+                document.querySelector(".modal-container").classList.remove("fade-in");
+            }, 1000);
+            document.querySelector(".modal-container").classList.add("fade-in");
+            try {
+                var the_id_of_this_abstract = $("#result").text().split("------endofabstract------")[1].trim();
+            } catch (error){
+                try {
+                    var the_id_of_this_abstract = $("#result2").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                    // console.log("error and attempt2 with result2 tag")
+                    // console.log(error)
+                } catch {
+                    var the_id_of_this_abstract = $("body").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                }
+            }   
+            var curr_goals = document.getElementById('user_goals').innerHTML;
+            var curr_dones = document.getElementById('user_so_far').innerHTML; 
+            send_data(the_id_of_this_abstract, 'yes, is relevant', curr_goals, curr_dones) 
+
+        }
+        if (name == 'n') {
+            show_loader();
+            document.getElementById("modal_confirm").innerText = "No";
+            setTimeout(function(){
+                document.querySelector(".modal-container").classList.remove("fade-in");
+            }, 1000);
+            document.querySelector(".modal-container").classList.add("fade-in");
+            try {
+                var the_id_of_this_abstract = $("#result").text().split("------endofabstract------")[1].trim();
+            } catch (error){
+                try {
+                    var the_id_of_this_abstract = $("#result2").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                    // console.log("error and attempt2 with result2 tag")
+                    // console.log(error)
+                } catch {
+                    var the_id_of_this_abstract = $("body").text().split("------endofabstract------")[1].split("\n")[0].trim();
+                }
+            }
+            var curr_goals = document.getElementById('user_goals').innerHTML;
+            var curr_dones = document.getElementById('user_so_far').innerHTML; 
+            send_data(the_id_of_this_abstract, 'no, not relevant', curr_goals, curr_dones)
+
+        }
+
+    }, false);
+
+
+</script> 
+
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+    const options = {
+        bottom: '64px', // default: '32px'
+        right: '32px', // default: '32px'
+        left: 'unset', // default: 'unset'
+        time: '0.6s', // default: '0.3s'
+        mixColor: '#fff', // default: '#fff'
+        backgroundColor: '#fff',  // default: '#fff'
+        buttonColorDark: '#100f2c',  // default: '#100f2c'
+        buttonColorLight: '#fff', // default: '#fff'
+        saveInCookies: false, // default: true,
+        label: '💡', // default: ''
+        autoMatchOsTheme: true // default: true
+    }
+
+    function addDarkmodeWidget() {
+        new Darkmode(options).showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+
+<script>
+    function hideMe() {
+        // document.getElementById("ticker").style.visibility="hidden";
+        var x = document.getElementById("ticker");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            document.getElementById("hideCounter").innerHTML = "x"
+            document.getElementById("hideCounter").style.borderRadius="50%";
+            document.getElementById("hideCounter").style.background="#D3D3D3";
+        } else {
+            x.style.display = "none";
+            document.getElementById("hideCounter").innerHTML = ">>>";
+            document.getElementById("hideCounter").style.border="0px";
+            document.getElementById("hideCounter").style.background="white";
+        }
+
+    }
+</script>
+
+<script>
+    function hideAll() {
+        // document.getElementById("ticker").style.visibility="hidden";
+
+        var x = document.getElementById("icons");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            document.getElementById('vote_buttons').style.display = "block";
+            document.getElementById('url').style.visibility = "visible";
+            document.getElementById('container').style.visibility = "visible";
+            document.getElementById("hideAll").innerHTML = "<i>f</i>"
+            document.getElementById("hideAll").style.borderRadius="50%";
+            document.getElementById("hideAll").style.background="#D3D3D3";
+            // document.getElementById("hideAll").style.marginRight="20px";
+        } else {
+            x.style.display = "none";
+            document.getElementById('vote_buttons').style.display = "none";
+            document.getElementById('url').style.visibility = "hidden";
+            document.getElementById('container').style.visibility = "hidden";
+            document.getElementById("hideAll").innerHTML = ">>>";
+            document.getElementById("hideAll").style.background="white";
+            document.getElementById("hideAll").style.border="0px";
+        }
+
+    }
+</script>
+
+<script type=text/javascript> 
+    function show_loader2(){
+        $("#loader2").addClass("loader");
+    }
+
+    $(document).ready( function() {
+        $('#progress').click(function(event) {
+            show_loader2();
+        });
+        $('#history').click(function(event) {
+            show_loader2();
+        });
+    });
+</script> 
+<script>
+
+    $(document).ready( function() {
+        var curr = document.getElementById("result").innerHTML
+        if (curr.includes('DONE WITH ALL ABSTRACTS :)')) {
+            document.getElementById('vote_buttons').style.display = "none";
+        }
+    });
+
+</script>
+</html>

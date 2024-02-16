@@ -1,0 +1,36 @@
+
+                <p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> </p><p><b style="font-size: 1.1em;"># {measure} {legal} {compliance}</b><br></p><ul>
+<li>measure:&nbsp;<b style="font-size: 17.6px;">real-world assessment&nbsp;</b>investigate – assess – analyze – observe …</li>
+<li>legal:&nbsp;<b style="font-size: 17.6px;">deals with regulation or law&nbsp;</b>law – regulation – statute …</li>
+<li>compliance:&nbsp;<b style="font-size: 17.6px;">assessing agreement with law&nbsp;</b>agreement – adherence – conformity …</li></ul>
+<b># Consider only abstract and title when making a decision, url is provided as backup </b>
+<ul>
+<li>if you think the abstract is missing important detail and maybe the scrape got it wrong, check out the url </li>
+<li>if the abstract does not render properly, check out the url</li></ul>
+<b># "yes" err on the side of yes ---&gt; relevance should be decided on with leniency, err on the side of inclusion </b> <p></p>
+<ul>
+<li>if you are having trouble rejecting it because it fits a little, err on the side of calling it "relevant"</li>
+</ul><div><b><span style="font-size: 17.6px;"># not_a_paper ==&gt; marking "not_a_paper" means that no one </span>else<span style="font-size: 17.6px;">&nbsp;will vote on the abstract!&nbsp;</span></b><br></div><div><ul><li>examples of "not_a_paper" include proceedings, keynotes, 'nan' entries</li><li>if you are unsure of a proceeding, mark it as "no, not relevant"&nbsp;</li></ul></div><div>...add something here if you like :) :)</div> <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+            

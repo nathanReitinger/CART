@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+278,0,https://doi.org/10.1145/3243734.3278528,Towards Understanding the Dynamics of Adversarial Attacks,"
+		<p>An intriguing property of deep neural networks (DNNs) is their inherent vulnerability to adversarial inputs, which significantly hinder the application of DNNs in security-critical domains. Despite the plethora of work on adversarial attacks and defenses, many important questions regarding the inference behaviors of adversarial inputs remain mysterious. This work represents a solid step towards answering those questions by investigating the information flows of normal and adversarial inputs within various DNN models and conducting in-depth comparative analysis of their discriminative patterns. Our work points to several promising directions for designing more effective defense mechanisms.</p>
+	------endofabstract------278",none,none,no,1691766425.838644

@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+407,0,https://doi.org/10.1145/3548606.3563549,Poster: An Analysis of Privacy Features in 'Expert-Approved' Kids' Apps,"
+		<p>During the course of the past decade, children have become avid consumers of digital media through mobile devices. The industry for children's mobile applications is booming and marketplaces offer categories of apps aimed specifically at children. In this study, we perform a mixed-methods privacy analysis of 137 'expert-approved' children's apps from the Google Play Store. Our findings show that these apps do not sufficiently support children to exercise their privacy rights, whilst simultaneously making use of libraries and data trackers which may collect and share sensitive user data.</p>
+	------endofabstract------407",none,none,no,1691766426.106248

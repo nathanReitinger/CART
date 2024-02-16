@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" rel="stylesheet">  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="icon-bar">
+            <a data-tooltip="Home" data-tooltip-location="right" href="{{ url_for('index') }}"><img class="zoom" src = "/static/media/home.png" alt = "home" width = "50" height = "50"/></a>
+            <a data-tooltip="Progress" data-tooltip-location="right" id="progress" href="{{ url_for('visualize') }}"><img class="zoom" src = "/static/media/progress.png" alt = "progress" width = "50" height = "50"/></a>
+            <a data-tooltip="History" data-tooltip-location="right" id="history" href="{{ url_for('history') }}"><img class="zoom" src = "/static/media/history.png" alt = "history" width = "50" height = "50"/></a> 
+            <a data-tooltip="About" data-tooltip-location="right" href="{{ url_for('info') }}"><img class="zoom" src = "/static/media/about.png" alt = "about" width = "50" height = "50"/></a>
+            <a data-tooltip="Account" data-tooltip-location="left" href="{{ url_for('startSelector') }}"><img class="zoom" src = "/static/media/account.png" alt = "account" width = "50" height = "50"/></a>
+
+        </div>
+    </header>
+
+    
+    <main>
+        <article>
+            
+            <h_title id="title"> Guidelines </h_title>
+            
+            <div>
+                <blockquote>
+                    <p>This page may be edited by users, click "save" to save your changes (backups are run periodically) </p>
+                </blockquote>
+            </div>
+            <br/>
+            <hr/>
+            
+            <div id="info" contentEditable="true">
+                <p> {{value | safe}} </p>
+            </div>
+
+            <input type = "button" id = "save" value = "save!"/> 
+        </article>
+        
+    </main>
+
+
+
+    <div id="loader"><div></div></div>
+    <div id="loader2"><div></div></div>
+
+
+</body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> </script>
+
+<script>
+
+    $('#save').click(function(event) {
+        // show_loader();
+        var curr = document.getElementById("info").innerHTML;
+        console.log(curr)
+        $.post(
+            "/info",
+            { data: curr }
+        ).done(function (reply) {
+            console.log("DONE logging")
+        });
+    });
+
+
+    </script>
+<script type=text/javascript> 
+    function show_loader2(){
+        $("#loader2").addClass("loader");
+    }
+
+    $(document).ready( function() {
+        $('#progress').click(function(event) {
+            show_loader2();
+        });
+        $('#history').click(function(event) {
+            show_loader2();
+        });
+    });
+</script> 
+</html>

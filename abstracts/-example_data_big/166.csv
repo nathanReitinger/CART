@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+166,0,https://doi.org/10.1145/3372297.3416253,TPDP'20: 6th Workshop on Theory and Practice of Differential Privacy,"
+		<p>Differential privacy is a rigorous mathematical model of privacy protection that has been the subject of deep theoretical research and also been deployed in real-world systems. This workshop aims to bring together a diverse array of researchers and practitioners to provoke stimulating discussion about the current state of differential privacy, in theory and practice. TPDP aims to be an inclusive forum that seeks to grow and diversify the differential privacy community.</p>
+	------endofabstract------166",none,none,no,1691766425.607683

@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+356,0,https://doi.org/10.1145/3372297.3420019,Facilitating Protocol-independent Industrial Intrusion Detection Systems,"
+		<p>Cyber-physical systems are increasingly threatened by sophisticated attackers, also attacking the physical aspect of systems. Supplementing protective measures, industrial intrusion detection systems promise to detect such attacks. However, due to industrial protocol diversity and lack of standard interfaces, great efforts are required to adapt these technologies to a large number of different protocols. To address this issue, we identify existing universally applicable intrusion detection approaches and propose a transcription for industrial protocols to realize protocol-independent semantic intrusion detection on top of different industrial protocols.</p>
+	------endofabstract------356",none,none,no,1691766426.00209

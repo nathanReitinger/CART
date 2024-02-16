@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+147,0,https://doi.org/10.1145/3548606.3564253,Poster: Patient Community -- A Test Bed for Privacy Threat Analysis,"
+		<p>Research and development of privacy analysis tools currently suffers from a lack of test beds for evaluation and comparison of such tools. In this work, we propose a benchmark application that implements an extensive list of privacy weaknesses based on the LINDDUN methodology. It represents a social network for patients whose architecture has first been described in an example analysis conducted by one of the LINDDUN authors. We have implemented this architecture and extended it with more privacy threats to build a test bed that enables comprehensive and independent testing of analysis tools.</p>
+	------endofabstract------147",none,none,no,1691766425.565975

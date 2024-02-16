@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+124,0,https://doi.org/10.1145/3319535.3354199,Signed Cryptographic Program Verification with Typed CryptoLine,"
+		<p>We develop an automated formal technique to specify and verify signed computation in cryptographic programs. In addition to new instructions, we introduce a type system to detect type errors in programs. A type inference algorithm is also provided to deduce types and instruction variants in cryptographic programs. In order to verify signed cryptographic C programs, we develop a translator from the GCC intermediate representation to our language. Using our technique, we have verified 82 C functions in cryptography libraries including NaCl, wolfSSL, bitcoin, OpenSSL, and BoringSSL.</p>
+	------endofabstract------124",none,none,no,1691766425.515945

@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+218,0,https://doi.org/10.1145/3319535.3353550,MTD 2019: The 6th ACM Workshop on Moving Target Defense,"
+		<p>The static nature of current computing systems has made them easy to attack and hard to defend. The idea of moving-target defense (MTD) is to impose the same asymmetric disadvantage on attackers by making systems dynamic and therefore harder to explore and predict. The workshop aims to address the MTD research challenges and methodologies to improve security. We have put together an exciting program, including eight papers and one invited keynote. Some texts in the summary are excerpted from the summaries of previous MTD editions. Related workshop proceedings are available in the ACM DL at: https://dl.acm.org/citation.cfm?id=3338468</p>
+	------endofabstract------218",none,none,no,1691766425.716197

@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+344,0,https://doi.org/10.1145/3243734.3278516,Off-Path Attacks Against PKI,"
+		<p>The security of Internet-based applications fundamentally relies on the trustworthiness of Certificate Authorities (CAs). We practically demonstrate for the first time that even a very weak attacker, namely, an off-path attacker, can effectively subvert the trustworthiness of popular commercially used CAs. We demonstrate an attack against one popular CA which uses Domain Validation (DV) for authenticating domain ownership. The attack exploits DNS Cache Poisoning and tricks the CA into issuing fraudulent certificates for domains the attacker does not legitimately own -- namely certificates binding the attacker's public key to a victim domain.</p>
+	------endofabstract------344",none,none,no,1691766425.976022

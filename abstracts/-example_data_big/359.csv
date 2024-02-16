@@ -1,0 +1,4 @@
+unique_id,review_count,url,title,abstract,user,vote,in_progress,time
+359,0,https://doi.org/10.1145/3243734.3278499,Cashing in on the File-System Cache,"
+		<p>We consider the disk cache (file-system cache) information channel, and show how it can be exploited on various systems to yield potentially sensitive information. Our approach can be used locally by an unprivileged adversary to detect whether another user is writing to disk, and if so, the rate at which data is being written. Further, we also show how an attacker can detect whether specific files have been recently accessed by the victim. We then extend this attack to remote access through a web server, using timing analysis to identify recent access of chosen pages.</p>
+	------endofabstract------359",none,none,no,1691766426.008693

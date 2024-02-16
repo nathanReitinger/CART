@@ -1,0 +1,41 @@
+
+                <p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> 
+                </p><p> </p><p><b style="font-size: 1.1em;"># what are you looking for voting on an abstract????</b></p>
+<b># Coding preferences?&nbsp;</b><ul><li>err on the side of yes_is_relevant?&nbsp;</li><li>if you are having trouble rejecting it, then keep it?</li>
+</ul><div><b><span style="font-size: 17.6px;"># not_a_paper ==&gt; marking "not_a_paper" means that no one </span>else<span style="font-size: 17.6px;">&nbsp;will vote on the abstract!&nbsp;</span></b><br></div><div><ul><li>examples of "not_a_paper" include proceedings, keynotes, 'nan' entries</li><li>if you are unsure of a proceeding, mark it as "no, not relevant"&nbsp;</li></ul></div><div>if you see something on synthetic data, say "yes relevant" &lt;== change me :)</div> <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+             <p></p>
+            

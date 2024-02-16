@@ -1,0 +1,54 @@
+site_name: CART
+site_url: https://CART.readthedocs.io/
+repo_name: nathanReitinger/CART
+repo_url: https://github.com/nathanReitinger/CART
+copyright: © CART Developers
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - Assumptions: assumptions.md
+  - Quick Setup: quick_setup.md
+  - Options: options.md
+  - Gamification: gamification.md
+  - Development & Testing: development.md
+theme:
+  name: material
+  logo: logo.png
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Use system theme
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light theme
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo 
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark theme
+  features:
+    - toc.integrate
+    - content.code.copy
+    - content.footnote.tooltips
+plugins:
+  - search
+markdown_extensions:
+  - admonition
+  - footnotes
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+extra_css:
+  - css/extra.css
+  - css/mkdocstrings.css
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
