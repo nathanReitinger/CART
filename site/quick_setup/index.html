@@ -332,6 +332,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quick Setup
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -341,6 +352,140 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu" class="md-nav__link">
+    Ubuntu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    Windows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    MacOS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ngrok" class="md-nav__link">
+    ngrok
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#localhost-testing-or-development" class="md-nav__link">
+    localhost (testing or development)
+  </a>
+  
+    <nav class="md-nav" aria-label="localhost (testing or development)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1" class="md-nav__link">
+    EXAMPLE 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2" class="md-nav__link">
+    EXAMPLE 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ngrok-teamwork" class="md-nav__link">
+    ngrok  (teamwork)
+  </a>
+  
+    <nav class="md-nav" aria-label="ngrok (teamwork)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1_1" class="md-nav__link">
+    EXAMPLE 1
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2_1" class="md-nav__link">
+    EXAMPLE 2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -423,8 +568,9 @@
 
 <h1 id="quick-setup">Quick Setup</h1>
 <p>The following instructions need only be accomplished by the team member running the server. </p>
-<h1 id="install">Install</h1>
+<h2 id="install">Install</h2>
 <pre><code>git clone https://github.com/nathanReitinger/CART
+cd CART
 </code></pre>
 <h2 id="requirements">Requirements</h2>
 <h4 id="ubuntu">Ubuntu</h4>
@@ -476,8 +622,9 @@ pip3 install -r requirements.txt
 <hr />
 <hr />
 <hr />
-<h2 id="localhost-best-for-testing-or-development">localhost <em>(best for testing or development)</em></h2>
-<p><strong>EXAMPLE 1</strong>: start <code>CART</code> on localhost by passing in each team member <code>-c user1</code> and use default flags </p>
+<h4 id="localhost-testing-or-development">localhost (<em>testing or development</em>)</h4>
+<h5 id="example-1">EXAMPLE 1</h5>
+<p>Start <code>CART</code> on localhost by passing in each team member <code>-c user1</code> and use default flags </p>
 <pre><code class="language-bash">python3 cart.py -c user1 -c user2
 </code></pre>
 <ul>
@@ -506,7 +653,8 @@ Press CTRL+C to quit
  * Debugger is active!
  * Debugger PIN: 760-158-545
 </code></pre>
-<p><strong>EXAMPLE 2</strong>: start <code>CART</code> on localhost by passing in team members, the port, and a confetti flag</p>
+<h5 id="example-2">EXAMPLE 2</h5>
+<p>Start <code>CART</code> on localhost by passing in team members, the port, and a confetti flag</p>
 <pre><code class="language-bash">python3 cart.py -c user1 -c user2 -p 8081 -cf 30
 </code></pre>
 <ul>
@@ -538,8 +686,8 @@ Press CTRL+C to quit
 <hr />
 <hr />
 <hr />
-<h2 id="ngrok-best-for-teamwork"><code>ngrok</code> <em>(best for teamwork)</em></h2>
-<p><strong>EXAMPLE 1</strong></p>
+<h4 id="ngrok-teamwork"><code>ngrok</code>  (<em>teamwork</em>)</h4>
+<h5 id="example-1_1">EXAMPLE 1</h5>
 <pre><code class="language-bash">python3 cart.py -c user1 -c user2 -c user3 -n 1l9nyS6lXovar....LECyV -cf 20
 </code></pre>
 <ul>
@@ -555,7 +703,7 @@ Press CTRL+C to quit
 </div>
 <p>The following option allows team members to connect to the same domain each time, and <code>ngrok</code> offers static domains for free. </p>
 </blockquote>
-<p><strong>EXAMPLE 2</strong></p>
+<h5 id="example-2_1">EXAMPLE 2</h5>
 <pre><code class="language-bash">python3 cart.py -c user1 -c user2 -c user3 -d selected-crawdad-loved.ngrok-free.app -n 1l9nyS6lXovar....LECyV -cf 20
 </code></pre>
 <ul>

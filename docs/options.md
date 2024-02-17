@@ -2,7 +2,9 @@
 
 `CART` accommodates several means of tweaking the reviewing process.  
 
-# Flags
+
+
+## Flags 
 
 | Flag | Use example                                | Description                                                  | Default          |
 | ---- | ------------------------------------------ | ------------------------------------------------------------ | ---------------- |

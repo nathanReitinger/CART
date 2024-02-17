@@ -4,15 +4,16 @@ The following instructions need only be accomplished by the team member running 
 
 
 
-# Install
+## Install 
 
 ```
 git clone https://github.com/nathanReitinger/CART
+cd CART
 ```
 
 
 
-## Requirements
+## Requirements 
 
 
 
@@ -40,7 +41,7 @@ pip3 install -r requirements.txt
 
 
 
-## `ngrok`
+## `ngrok` 
 
 > !!! WARNING
 >     
@@ -57,7 +58,7 @@ pip3 install -r requirements.txt
 
 
 
-## Getting Started
+## Getting Started 
 
 > !!! Note
 >     
@@ -87,11 +88,11 @@ pip3 install -r requirements.txt
 
 
 
-## localhost *(best for testing or development)* 
+#### localhost (*testing or development*)
 
+##### EXAMPLE 1
 
-
-**EXAMPLE 1**: start `CART` on localhost by passing in each team member `-c user1` and use default flags 
+Start `CART` on localhost by passing in each team member `-c user1` and use default flags 
 
 ```bash
 python3 cart.py -c user1 -c user2
@@ -128,7 +129,9 @@ Press CTRL+C to quit
 
 
 
-**EXAMPLE 2**: start `CART` on localhost by passing in team members, the port, and a confetti flag
+##### EXAMPLE 2
+
+Start `CART` on localhost by passing in team members, the port, and a confetti flag
 
 ```bash
 python3 cart.py -c user1 -c user2 -p 8081 -cf 30
@@ -173,11 +176,9 @@ Press CTRL+C to quit
 
 
 
-## `ngrok` *(best for teamwork)* 
+#### `ngrok`  (*teamwork*)
 
-
-
-**EXAMPLE 1**
+##### EXAMPLE 1
 
 ```bash
 python3 cart.py -c user1 -c user2 -c user3 -n 1l9nyS6lXovar....LECyV -cf 20
@@ -199,7 +200,7 @@ python3 cart.py -c user1 -c user2 -c user3 -n 1l9nyS6lXovar....LECyV -cf 20
 
 
 
-**EXAMPLE 2**
+##### EXAMPLE 2
 
 ```bash
 python3 cart.py -c user1 -c user2 -c user3 -d selected-crawdad-loved.ngrok-free.app -n 1l9nyS6lXovar....LECyV -cf 20

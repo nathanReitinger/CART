@@ -19,8 +19,6 @@ Please note that this project is released with a [Contributor Code of Conduct][c
 
 
 
-
-
-# Testing 
+## Testing 
 
 Testing scripts are found in the `/testing` folder. 
