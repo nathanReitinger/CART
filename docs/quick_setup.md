@@ -22,21 +22,21 @@ cd CART
 ```bash
 sudo apt-get update
 sudo apt install python3-pip
-pip3 install -r requirements.txt
+sudo pip3 install -r requirements.txt
 ```
 
 #### Windows
 
 ```bash
 ==> Search for python3.n in Microsoft store
-pip3 install -r requirements.txt
+sudo pip3 install -r requirements.txt
 ```
 
 #### MacOS
 
 ```bash
-brew install python3
-pip3 install -r requirements.txt
+==> assume python3 is installed: brew install python3
+sudo pip3 install -r requirements.txt
 ```
 
 
