@@ -18,7 +18,7 @@ Documentation for `CART` is available on [Read the Docs](https://nathanreitinger
 
 ### Demo
 
-<video controls src="https://nathanreitinger.github.io/CART/img/demo.mov"></video>
+<video controls src="docs/img/demo.mp4"></video>
 
 
 
