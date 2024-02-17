@@ -16,11 +16,6 @@
 
 Documentation for `CART` is available on [Read the Docs](https://nathanreitinger.github.io/CART/).
 
-### Demo
-
-<video controls src="docs/img/demo.mp4"></video>
-
-
 
 ### Repo Structure 
 
