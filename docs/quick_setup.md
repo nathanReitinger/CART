@@ -7,7 +7,7 @@ The following instructions need only be accomplished by the team member running 
 # Install
 
 ```
-git clone <url>
+git clone https://github.com/nathanReitinger/CART
 ```
 
 
