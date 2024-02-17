@@ -2,7 +2,9 @@
 
 
 
-[![Docs](https://readthedocs.org/projects/CART/badge/?version=latest)](https://CART.readthedocs.io/en/stable/index.html)
+[![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?style=for-the-badge&logo=MaterialForMkDocs&logoColor=white)](https://nathanreitinger.github.io/CART/)
+
+
 
 # Culling Abstacts for Relevancy in Teams
 
