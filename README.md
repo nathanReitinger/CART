@@ -38,7 +38,7 @@ Documentation for `CART` is available on [Read the Docs](https://nathanreitinger
 ├── docs/                      // documentation for readthedocs
 ├── info/                      // "about" tab for information on relevancy assessment
 ├── mkdocs.yml                 // readthedocs
-├── paper.md                   // JOSS
+├── paper/                     // JOSS
 ├── requirements.txt           // install dependencies 
 ├── sample_get_data/get_data.py// web scraper to populate sample paper data 
 ├── static/                    // images and CSS for web
