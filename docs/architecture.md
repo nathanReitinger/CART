@@ -18,7 +18,15 @@ After initiating `cart.py` by passing in a set of team members (`-c`) and utiliz
 
 ### Userland 
 
-Users who are logged in will be served one paper at a time, and asked to vote on whether the paper's title and abstract are relevant to the researchers' goals. The display of this information has been gamified both in terms of a rewards system based around votes cast and by letting users set their own goals with a progress bar. The reviewing view also has a few other features for ease of vote casting (e.g., keystroke voting). Finally, `CART` keeps track of "opened" abstracts in order to accommodate a come-and-go reviewing process. Once a vote is cast, `CART` will updat the paper by logging the vote. This process (noted with red arrows in the figure) will cycle in a loop until eligible abstracts cease to exist. 
+Users who are logged in will be served one paper at a time, and asked to vote on whether the paper's title and abstract are relevant to the researchers' goals. The user will be automatically directed to the home screen after logging in. The display of paper inforamtion on the homes screen has been gamified, both in terms of a rewards system based around votes cast and by letting users set their own goals with a progress bar (see also [gamification](https://nathanreitinger.github.io/CART/gamification/)). The reviewing view also has a few other features for ease of vote casting (e.g., keystroke voting). 
+
+Other web pages in userland include the team's **progress** (how many papers have been voted on), **history** (the last 50 papers you voted on, including the ability to change a vote), **about** the project (user-editable guidelines for voting), and **account** information (for logging in and out). 
+
+
+
+![dock](/Users/hugo/MEGA/Work/- UMD/research/- sok privacy compliance/data/cart/CART/docs/img/dock.svg)
+
+Finally, it is notable that `CART` keeps track of "opened" abstracts in order to accommodate a come-and-go reviewing process. Once a vote is cast, `CART` will updat the paper by logging the vote. This process (noted with red arrows in the architecture figure above) will cycle in a loop until eligible abstracts cease to exist. 
 
 ### Eligibility 
 
