@@ -1,5 +1,5 @@
 ---
-title: 'CART: A Tool for Making SoK Relevancy Screening Easier'
+title: 'CART: A Tool for Making Paper Relevancy Screening Easier'
 tags:
   - Python
   - Flask
