@@ -22,7 +22,7 @@ Other web pages in userland include the team's **progress** (how many papers hav
 
 
 
-![dock](/Users/hugo/MEGA/Work/- UMD/research/- sok privacy compliance/data/cart/CART/docs/img/dock.svg)
+<img src="/img/dock.svg" alt="tabs on webpage" style="zoom: 100%; display: block; margin: 0px auto;" />
 
 Finally, it is notable that `CART` keeps track of "opened" abstracts in order to accommodate a come-and-go reviewing process. Once a vote is cast, `CART` will update the paper by logging the vote. This process (noted with red arrows in the architecture figure above) will cycle in a loop until eligible abstracts cease to exist. 
 
@@ -32,9 +32,9 @@ In serverland, `cart.py` makes a decision (in a loop until no eligible papers ex
 
 | Rule                                                         | Comment                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| The user has not seen this abstract                          | If a user has already voted on an abstract, do not re-serve the abstract |
-| Abstract votes for this paper are currently less than the number of votes required for each paper | Only serve an abstract to a user if the abstract needs another vote. If a paper has been voted on before, and the total number of votes is at the total required per project (e.g., "at least three members of the team must vote on each abstract"), then do not serve this abstract |
-| Abstract is not flagged as 'not-a-paper'                     | Papers are most commonly gathered through an automated process, and these automated processes are not perfect (i.e., the paper set researchers cull through may include papers that are not papers: proceeding papers, PhD dissertation papers, or ACM viewpoint papers). Depending on a project's goals, team members may wish to flag these so that multiple people do not need to review them. This flag effectuates that. Once marked, these papers will not be served to any other members |
+| The user has not seen this abstract                          | If a user has already voted on an abstract, do not re-serve the abstract. |
+| Abstract votes for this paper are currently less than the number of votes required for each paper | Only serve an abstract to a user if the abstract needs another vote. If a paper has been voted on before, and the total number of votes is at the total required per project (e.g., "at least three members of the team must vote on each paper"), then do not serve this abstract. |
+| Abstract is not flagged as 'not-a-paper'                     | Papers are most commonly gathered through an automated process, and these automated processes are not perfect (i.e., the paper set researchers cull through may include papers that are not papers: proceeding papers, PhD dissertation papers, or ACM viewpoint papers). Depending on a project's goals, team members may wish to flag a paper so that multiple people do not need to review them. This flag effectuates that. Once marked, these papers will not be served to any other members. |
 | Abstract is not "open" by another user                       | Team members are very likely to start reading an abstract and then fail to submit a vote on the paper. `CART` accommodates this situation by initially "opening" a paper, which means that no one else can review it while it is open and the user who opened it cannot move forward until it is closed. |
 
 ### Optimization

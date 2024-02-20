@@ -376,6 +376,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#assumption-3-users-are-friendly" class="md-nav__link">
+    Assumption #3: Users are friendly
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -568,7 +575,9 @@ no,
 <p>The second option is to run the demo scraper <code>get_data.py</code> located in the <code>sample_get_data</code> folder. If you run this file, you will be scraping paper titles and abstracts from the Privacy Enhancing Technologies Symposium for the year 2023. This script will create a new folder <code>/abstracts/-sample_from_scrape/SAMPLE_PETS_at_&lt;TIME GOES HERE&gt;/'</code>which will house the .csv files (numbered) that <code>CART</code> expects to see. You can then drag and drop these files to the <code>abstracts/</code> location and try them out. Researchers may choose to expand this scraping script to include more years and conferences when creating an initial batch of papers to review. </p>
 <p><img src="../img/put_papers_where_scrape.png" alt="put_papers_where_1" style="zoom:33%;display: block; margin: 0 auto" /></p>
 <h3 id="assumption-2-member-driven-server-is-ok">Assumption #2: Member-Driven-Server-Is-OK</h3>
-<p>The second assumption made by <code>CART</code> is that one team member keeps <code>cart.py</code> running on their local machine for as long as the culling process takes. Although it is true that a viable alternative would be to point a server at <code>CART</code>, this depends on resources that are not typically freely accessible. Therefore, <code>CART</code> makes every effort possible to provide teams with a "zero-step" culling process. One team member initiates <code>CART</code> with the free <code>ngrok</code> service, allowing everyone to view and grade papers at their leaisure. </p>
+<p>The second assumption made by <code>CART</code> is that one team member keeps <code>cart.py</code> running on their local machine for as long as the culling process takes. Although it is true that a viable alternative would be to point a server at <code>CART</code>, this depends on resources that are not typically freely accessible. Therefore, <code>CART</code> makes every effort possible to provide teams with a "zero-step" culling process. One team member initiates <code>CART</code> with the free <code>ngrok</code> service, allowing everyone to view and grade papers at their leisure. </p>
+<h3 id="assumption-3-users-are-friendly">Assumption #3: Users are friendly</h3>
+<p><code>CART</code> assumes (to use security terminology) that users are friendly, but curious. There is no strict login process because it is assumed that users are not going to be logging in with other usernames and making fraudulent votes. This is also helpful when an administrator needs to review votes cast by other members or debug (logging in as the other user helps reproduce the issue). </p>
 
 
 
