@@ -492,12 +492,12 @@
 <p><img src="../img/two.png" alt="one" style="zoom:3%;" /> Userland, where a user who is logged in votes on papers. </p>
 <p><img src="../img/architecture.svg" alt="architecture" style="zoom: 120%; display: block; margin: 0px auto;" /></p>
 <h3 id="serverland">Serverland</h3>
-<p>After initiating <code>cart.py</code> by passing in a set of team members (<code>-c</code>) and utilizing optional configurations, a Flask app is created (either localhost or <code>ngrok</code>) that will look to serve "eligible" papers found in the <code>abstracts/</code> folder. These papers are assumed to be in CSV format with a specific set of columns. Papers are stored as separate <code>.csv</code> files to enable ease of investigation when unexpected behavior occurrs and error isolation (e.g., a mistak in voting on one abstract affects no other abstracts).   </p>
+<p>After initiating <code>cart.py</code> by passing in a set of team members (<code>-c</code>) and utilizing optional configurations, a Flask app is created (either localhost or <code>ngrok</code>) that will look to serve "eligible" papers found in the <code>abstracts/</code> folder. These papers are assumed to be in CSV format with a specific set of columns. Papers are stored as separate <code>.csv</code> files to enable ease of investigation when unexpected behavior occurs and error isolation (e.g., a mistake in voting on one abstract affects no other abstracts).   </p>
 <h3 id="userland">Userland</h3>
-<p>Users who are logged in will be served one paper at a time, and asked to vote on whether the paper's title and abstract are relevant to the researchers' goals. The user will be automatically directed to the home screen after logging in. The display of paper inforamtion on the homes screen has been gamified, both in terms of a rewards system based around votes cast and by letting users set their own goals with a progress bar (see also <a href="https://nathanreitinger.github.io/CART/gamification/">gamification</a>). The reviewing view also has a few other features for ease of vote casting (e.g., keystroke voting). </p>
+<p>Users who are logged in will be served one paper at a time, and asked to vote on whether the paper's title and abstract are relevant to the researchers' goals. The user will be automatically directed to the home screen after logging in. The display of paper information on the home screen has been gamified, both in terms of a rewards system based on votes cast and by letting users set their own goals with a progress bar (see also <a href="https://nathanreitinger.github.io/CART/gamification/">gamification</a>). The reviewing view also has a few other features for ease of vote casting (e.g., keystroke voting). </p>
 <p>Other web pages in userland include the team's <strong>progress</strong> (how many papers have been voted on), <strong>history</strong> (the last 50 papers you voted on, including the ability to change a vote), <strong>about</strong> the project (user-editable guidelines for voting), and <strong>account</strong> information (for logging in and out). </p>
 <p><img alt="dock" src="/Users/hugo/MEGA/Work/- UMD/research/- sok privacy compliance/data/cart/CART/docs/img/dock.svg" /></p>
-<p>Finally, it is notable that <code>CART</code> keeps track of "opened" abstracts in order to accommodate a come-and-go reviewing process. Once a vote is cast, <code>CART</code> will updat the paper by logging the vote. This process (noted with red arrows in the architecture figure above) will cycle in a loop until eligible abstracts cease to exist. </p>
+<p>Finally, it is notable that <code>CART</code> keeps track of "opened" abstracts in order to accommodate a come-and-go reviewing process. Once a vote is cast, <code>CART</code> will update the paper by logging the vote. This process (noted with red arrows in the architecture figure above) will cycle in a loop until eligible abstracts cease to exist. </p>
 <h3 id="eligibility">Eligibility</h3>
 <p>In serverland, <code>cart.py</code> makes a decision (in a loop until no eligible papers exist) on which paper to serve by checking the following rules: </p>
 <table>
@@ -514,7 +514,7 @@
 </tr>
 <tr>
 <td>Abstract votes for this paper are currently less than the number of votes required for each paper</td>
-<td>Only serve an abstract to a user if the abstract needs another vote. If an paper has been voted on before, and the total number of votes is at the total required per project (e.g., "at least three members of the team must vote on each abstract"), then do not serve this abstract</td>
+<td>Only serve an abstract to a user if the abstract needs another vote. If a paper has been voted on before, and the total number of votes is at the total required per project (e.g., "at least three members of the team must vote on each abstract"), then do not serve this abstract</td>
 </tr>
 <tr>
 <td>Abstract is not flagged as 'not-a-paper'</td>
@@ -529,7 +529,7 @@
 <h3 id="optimization">Optimization</h3>
 <p>Given that these types of projects can involve the review of thousands of papers, <code>CART</code> needs to be able to make decisions on paper eligibility quickly without reviewing the full set of papers. To accomplish this, <code>CART</code> keeps a local file as storage of opened papers and review counts. This allows a single read operation where a loop would have been used otherwise. </p>
 <h3 id="race-conditions">Race Conditions</h3>
-<p>To prevent race conditions on opening papers or submiting votes, <code>CART</code> uses <code>filelock</code>. For more on this process, see <a href="https://py-filelock.readthedocs.io/en/latest/">https://py-filelock.readthedocs.io/en/latest/</a>.</p>
+<p>To prevent race conditions on opening papers or submitting votes, <code>CART</code> uses <code>filelock</code>. For more on this process, see <a href="https://py-filelock.readthedocs.io/en/latest/">https://py-filelock.readthedocs.io/en/latest/</a>.</p>
 <div class="footnote">
 <hr />
 <ol>
