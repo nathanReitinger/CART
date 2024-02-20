@@ -15,7 +15,8 @@ Please note that this project is released with a [Contributor Code of Conduct][c
 | Area   | Comment                                                      |
 | ------ | ------------------------------------------------------------ |
 | Mobile | `CART` currently only works for desktop.                     |
-| GUI    | Running `cart.py` may benefit from a GUI that allows users to select options instead of passing in flags |
+| GUI    | Running `cart.py` may benefit from a GUI that allows users to select options instead of passing in flags. |
+| Login  | `CART` assumes users are honest and therefore does not require login passwords or other security-facing features. Some teams may prefer tooling that helps enforce access control. |
 
 
 

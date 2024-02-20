@@ -44,9 +44,9 @@ sudo pip3 install -r requirements.txt
 ## `ngrok` 
 
 > !!! WARNING
->     
 >
->     `ngrok` is not required to run `CART` but is strongly recommended because it allows one team member to set up a server that can be accessible by any other team member.
+>
+> `ngrok` is not required to run `CART` but is strongly recommended because it allows one team member to set up a server that can be accessible by any other team member.
 
 
 
@@ -54,16 +54,16 @@ sudo pip3 install -r requirements.txt
 - Get auth token: [https://dashboard.ngrok.com/get-started/your-authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) 
 - Get static page: [free ngrok static domain](https://ngrok.com/blog-post/free-static-domains-ngrok-users#:~:text=Static%20domains%20are%20unique%20domains,links%20caused%20by%20agent%20restarts.)
 
-*OPTIONAL* you can use your own server&#151;but in the spirit of free and open source software , we assume a private server is not available. 
+*OPTIONAL* you can use your own server&#151;but in the spirit of free and open-source software, we assume a private server is not available. 
 
 
 
 ## Getting Started 
 
 > !!! Note
->     
 >
->     `CART` will assume that papers are represented as .csv files and that these files are found in the `abstracts/` folder.
+>
+> `CART` will assume that papers are represented as .csv files and that these files are found in the `abstracts/` folder.
 
 
 
@@ -72,10 +72,10 @@ sudo pip3 install -r requirements.txt
 ```
 .
 ├── abstracts
-│   │   1.csv // your abstracts go here
-│   │   2.csv // your abstracts go here
-│   │   ...
-│   └── ngrok_auth.txt
+│   │   1.csv // your abstracts go here
+│   │   2.csv // your abstracts go here
+│   │   ...
+│   └── ngrok_auth.txt
 ```
 
 - the `ngrok_auth.txt` file stores your authToken if you are using the `ngrok` flag. 
@@ -196,7 +196,7 @@ python3 cart.py -c user1 -c user2 -c user3 -n 1l9nyS6lXovar....LECyV -cf 20
 > !!! Notification
 >
 >
->  The following option allows team members to connect to the same domain each time, and `ngrok` offers static domains for free. 
+> The following option allows team members to connect to the same domain each time, and `ngrok` offers static domains for free. 
 
 
 
