@@ -496,7 +496,7 @@
 <h3 id="userland">Userland</h3>
 <p>Users who are logged in will be served one paper at a time, and asked to vote on whether the paper's title and abstract are relevant to the researchers' goals. The user will be automatically directed to the home screen after logging in. The display of paper information on the home screen has been gamified, both in terms of a rewards system based on votes cast and by letting users set their own goals with a progress bar (see also <a href="https://nathanreitinger.github.io/CART/gamification/">gamification</a>). The reviewing view also has a few other features for ease of vote casting (e.g., keystroke voting). </p>
 <p>Other web pages in userland include the team's <strong>progress</strong> (how many papers have been voted on), <strong>history</strong> (the last 50 papers you voted on, including the ability to change a vote), <strong>about</strong> the project (user-editable guidelines for voting), and <strong>account</strong> information (for logging in and out). </p>
-<p><img alt="dock" src="../img/dock.svg" /></p>
+<p><img src="../img/doc" alt="tabs on webpage" style="zoom: 100%; display: block; margin: 0px auto;" /></p>
 <p>Finally, it is notable that <code>CART</code> keeps track of "opened" abstracts in order to accommodate a come-and-go reviewing process. Once a vote is cast, <code>CART</code> will update the paper by logging the vote. This process (noted with red arrows in the architecture figure above) will cycle in a loop until eligible abstracts cease to exist. </p>
 <h3 id="eligibility">Eligibility</h3>
 <p>In serverland, <code>cart.py</code> makes a decision (in a loop until no eligible papers exist) on which paper to serve by checking the following rules: </p>
