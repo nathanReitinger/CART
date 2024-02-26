@@ -22,7 +22,7 @@
 Easier</article-title>
 </title-group>
 <contrib-group>
-<contrib contrib-type="author" equal-contrib="yes">
+<contrib contrib-type="author">
 <contrib-id contrib-id-type="orcid">https://orcid.org/0000-0001-8294-9946</contrib-id>
 <name>
 <surname>Reitinger</surname>
@@ -214,6 +214,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
       <publisher-name>HeinOnline</publisher-name>
       <year iso-8601-date="2019">2019</year>
       <volume>22</volume>
+      <uri>https://doi.org/10.31228/osf.io/bfqh3</uri>
+      <pub-id pub-id-type="doi">10.31228/osf.io/bfqh3</pub-id>
       <fpage>1</fpage>
       <lpage></lpage>
     </element-citation>
@@ -245,6 +247,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
       <year iso-8601-date="2021">2021</year>
       <volume>2021</volume>
       <issue>3</issue>
+      <uri>https://doi.org/10.2478/popets-2021-0056</uri>
+      <pub-id pub-id-type="doi">10.2478/popets-2021-0056</pub-id>
       <fpage>453</fpage>
       <lpage>473</lpage>
     </element-citation>
@@ -268,6 +272,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
       <source>2021 IEEE symposium on security and privacy (SP)</source>
       <publisher-name>IEEE</publisher-name>
       <year iso-8601-date="2021">2021</year>
+      <uri>https://doi.org/10.1109/sp40001.2021.00028</uri>
+      <pub-id pub-id-type="doi">10.1109/sp40001.2021.00028</pub-id>
       <fpage>247</fpage>
       <lpage>267</lpage>
     </element-citation>
@@ -287,6 +293,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
       <source>2023 IEEE 8th european symposium on security and privacy (EuroS&amp;p)</source>
       <publisher-name>IEEE</publisher-name>
       <year iso-8601-date="2023">2023</year>
+      <uri>https://doi.org/10.1109/eurosp57164.2023.00056</uri>
+      <pub-id pub-id-type="doi">10.1109/eurosp57164.2023.00056</pub-id>
       <fpage>868</fpage>
       <lpage>895</lpage>
     </element-citation>
@@ -302,9 +310,11 @@ a Creative Commons Attribution 4.0 International License (CC BY
         <name><surname>Benlian</surname><given-names>Alexander</given-names></name>
         <name><surname>Vogt</surname><given-names>Joachim</given-names></name>
       </person-group>
-      <article-title>\{SoK\}: Still plenty of phish in the sea—a taxonomy of \{user-oriented\} phishing interventions and avenues for future research</article-title>
+      <article-title>SoK: Still plenty of phish in the sea—a taxonomy of user-oriented phishing interventions and avenues for future research</article-title>
       <source>Seventeenth symposium on usable privacy and security (SOUPS 2021)</source>
       <year iso-8601-date="2021">2021</year>
+      <uri>https://doi.org/10.26083/tuprints-00020675</uri>
+      <pub-id pub-id-type="doi">10.26083/tuprints-00020675</pub-id>
       <fpage>339</fpage>
       <lpage>358</lpage>
     </element-citation>

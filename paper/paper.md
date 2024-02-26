@@ -13,7 +13,6 @@ tags:
 authors:
   - name: Nathan Reitinger
     orcid: 0000-0001-8294-9946
-    equal-contrib: true
     affiliation: 1
 affiliations:
  - name: University of Maryland, USA
