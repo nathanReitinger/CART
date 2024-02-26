@@ -1,6 +1,8 @@
-<img src="docs/img/logo.svg" alt="logo" style="zoom:40%;" />
+<img src="docs/img/logo.svg" alt="logo" style="zoom:30%;" />
 
- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![status](https://joss.theoj.org/papers/d58ad58b740d1d2d2470beaf533ef221/status.svg)](https://joss.theoj.org/papers/d58ad58b740d1d2d2470beaf533ef221) [![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?style=for-the-badge&logo=MaterialForMkDocs&logoColor=white)](https://nathanreitinger.github.io/CART/)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![status](https://joss.theoj.org/papers/d58ad58b740d1d2d2470beaf533ef221/status.svg)](https://joss.theoj.org/papers/d58ad58b740d1d2d2470beaf533ef221) 
+
+[![Built with Material for MkDocs](https://img.shields.io/badge/Material_for_MkDocs-526CFE?style=for-the-badge&logo=MaterialForMkDocs&logoColor=white)](https://nathanreitinger.github.io/CART/)
 
 
 
