@@ -1,4 +1,6 @@
-<img src="docs/img/logo.svg" alt="logo" style="zoom:30%;" />
+
+<p align="center"><img src="docs/img/logo.svg" data-canonical-src="docs/img/logo.svg" width="100" height="100"/></p>
+
 
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![status](https://joss.theoj.org/papers/d58ad58b740d1d2d2470beaf533ef221/status.svg)](https://joss.theoj.org/papers/d58ad58b740d1d2d2470beaf533ef221) 
 
