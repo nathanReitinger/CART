@@ -23,7 +23,13 @@ Please note that this project is released with a [Contributor Code of Conduct][c
 
 ## Testing 
 
-Testing scripts are found in the `/testing` folder. The `test.py` program will
+Testing scripts are found in the `/testing` folder. The `test.py` program
+
+```bash
+python3 test.py
+```
+
+will do the following:
 
 - use Selenium for testing
 - setup `CART` by moving test abstracts into the right folder
