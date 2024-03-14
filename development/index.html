@@ -485,12 +485,38 @@
 </tr>
 <tr>
 <td>Login</td>
-<td><code>CART</code> assumes users are honest and therefore does not require login passwords or other security-facing features. Some teams may prefer tooling that helps enforce access control.</td>
+<td><code>CART</code> assumes users are honest and therefore does not require login passwords or other security-facing features. Some teams may prefer tooling that helps enforce access control, like logins with a password.</td>
+</tr>
+<tr>
+<td>Post-processing</td>
+<td><code>CART</code> would benefit from a task that compiles all votes cast into a single csv file; currently, <code>CART</code> stores papers (as <code>.csv</code> files) with votes cast per user, but does not aggregate all of these into a single file for completion post-processing.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="testing">Testing</h2>
-<p>Testing scripts are found in the <code>/testing</code> folder. </p>
+<p>Testing scripts are found in the <code>/testing</code> folder. The <code>test.py</code> program will</p>
+<ul>
+<li>use Selenium for testing</li>
+<li>setup <code>CART</code> by moving test abstracts into the right folder</li>
+<li>abstracts will be moved into the <code>abstracts/-testing/</code> folder (and cleaned up when <code>test.py</code> exits) </li>
+<li>use a "small" set of abstracts</li>
+<li>login as a provided user and vote on 5 abstracts (<code>number_to_vote</code> argument)<ul>
+<li>checking login </li>
+<li>checking vote casting</li>
+<li>checking "done" or completed on all abstracts voted on</li>
+<li>teardown to reset abstracts</li>
+</ul>
+</li>
+<li>use a "big" set of abstracts </li>
+<li>login as a provided user and vote on 50 abstracts (<code>number_to_vote</code> argument)<ul>
+<li>checking login </li>
+<li>checking vote casting</li>
+<li>checking "done" or completed on all abstracts voted on</li>
+<li>teardown to reset abstracts</li>
+</ul>
+</li>
+<li>print results of tests to terminal </li>
+</ul>
 
 
 
