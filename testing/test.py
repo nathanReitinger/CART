@@ -1,5 +1,6 @@
 
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
@@ -49,7 +50,7 @@ def setup():
 
     path_to_chromedriver = '/usr/local/bin/chromedriver'  # change path as needed
     chrome_options = Options()
-    # chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--headless')
     chrome_options.add_experimental_option('prefs', prefs)
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-dev-shm-usage')
@@ -60,7 +61,8 @@ def setup():
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
     chrome_options.add_argument('--kiosk-logging.infoing')
     
-    browser = webdriver.Chrome(options=chrome_options)
+    browser = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    # browser = webdriver.Chrome(options=chrome_options)
     return browser
 
 def replace(file_path, pattern, subst):
@@ -111,7 +113,6 @@ def test_vote(examples_to_use, number_to_vote):
             print(f)
             shutil.copy(f, "abstracts/-testing/")
         
-
         # copy the file for testing 
         shutil.copyfile("cart.py", "cart_testing.py")
         file_path = 'cart_testing.py'
@@ -132,7 +133,7 @@ def test_vote(examples_to_use, number_to_vote):
         subprocess.Popen(['stty', '-tostop'])
         proc = subprocess.Popen(["python3","cart_testing.py","-c", "user1", "-c", "user2", "-p", "8083", "-r", "2"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         time.sleep(10)
-        print("[+] load up CART")
+        print("[+] load up CART DONE")
 
         print("[ ] selenium setup")
         # get browser
@@ -143,7 +144,7 @@ def test_vote(examples_to_use, number_to_vote):
             print("--sleeping to wait for internet--")
             time.sleep(5)
         # get homepage
-        print("[+] selenium setup")
+        print("[+] selenium setup DONE")
 
         print("[ ] login")
         browser.get('http://127.0.0.1:8083/')
@@ -160,14 +161,14 @@ def test_vote(examples_to_use, number_to_vote):
         actions.send_keys(Keys.ENTER)
         actions.perform()
         time.sleep(3) 
-        print("[+] login")
+        print("[+] login DONE")
 
         print("[ ] cast vote of yes on all abstracts in the small examples")
         # for each of the 5 abstracts, vote yes
         for i in range(number_to_vote):
             ActionChains(browser).send_keys("y").perform()
             time.sleep(3)  
-        print("[+] cast vote of yes on all abstracts in the small examples")
+        print("[+] cast vote of yes on all abstracts in the small examples DONE")
         # check that printed to screen is the done statement
 
         print("[ ] check successful vote casting")
@@ -186,7 +187,7 @@ def test_vote(examples_to_use, number_to_vote):
 
     except Exception as e:
         print("error on test, FAIL\n", e)
-        browser.quit()
+        # browser.quit()
         teardown()
         # we are in testing folder, go back one step 
         os.chdir(os.getcwd() + '/testing')

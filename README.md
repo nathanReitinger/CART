@@ -16,6 +16,46 @@
 
 Documentation for `CART` is available on [Read the Docs](https://nathanreitinger.github.io/CART/).
 
+### Overview
+
+Let's assume you just started a new SoK project, [like this one](https://conpro23.ieee-security.org/papers/reitinger-conpro23.pdf). The first step in the project will be to review conference publications from the past *n* years to determine if each paper is relevant to your SoK's particular topic. So you'd have a larger number of papers (something like *n=10,000*) to review, and will likely only be reading the titles and abstracts of these papers to determine relevancy. And you probably want one or more other people to review each paper as well, to get a less biased relevancy determination. 
+
+What you need is a way to view a large number of paper titles and abstracts, "vote" on the relevancy for each paper, and a system to store and update these votes. Eneter `CART`: a system for voting on a large number of abstracts in teams.
+
+### Functionality
+
+`CART` allows teams of researchers to collaboratively vote on abstracts via `ngrok` (a [unified ingress platform  for developers](https://ngrok.com/)), providing an ephemeral or static (flags in `CART`) website for researchers to conduct their relevancy checks. The program is simple to setup
+
+```
+git clone https://github.com/nathanReitinger/CART
+cd CART
+sudo pip3 install -r requirements.txt
+python3 cart.py -c user1 -c user2 <== two users, using localhost
+```
+
+and places an emphasis on interpretability in coding (i.e., votes are stored in an `/abstracts/` folder which contains `.csv` files for each paper being graded; these files can easily be inspected with a text editor, as opposed to a more formal database). 
+
+### Architecture (in brief)
+
+`CART` uses the Flask framework, and serves a varity of pages:
+
+![dock](docs/img/dock.svg)
+
+- **Home**: vote on abstracts
+- **Progress**: how many papers have been voted on 
+- **Hisotry**: your votes per paper (allows you to change a vote as well)
+- **About**: information about your project (editable by team members)
+- **Account**: login and logout information 
+
+The primary `cart.py` program serves all web pages and updates abstracts located in the `abstracts` folder. Abstracts must follow an internal convetion (more detail [here](https://nathanreitinger.github.io/CART/assumptions/)). `CART` also provides a variety of gamifications to make the coding process easier (e.g., confetti on every *n*<sup>th</sup> abstract voted on). 
+
+### Contributing
+
+See our contributing [guidelines](https://nathanreitinger.github.io/CART/CONTRIBUTING/), we'd love the help!
+
+### DEMO 
+
+<img src="docs/img/screenshot.png" alt="screenshot" style="zoom: 25%;--s: 10px; padding: var(--s);border: calc(2*var(--s)) solid #0000;outline: 1px solid #000;outline-offset: calc(-1*var(--s));background: conic-gradient(from 90deg at 1px 1px,#0000 25%,#000 0);" />
 
 ### Repo Structure 
 

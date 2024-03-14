@@ -20,9 +20,7 @@ Users who are logged in will be served one paper at a time, and asked to vote on
 
 Other web pages in userland include the team's **progress** (how many papers have been voted on), **history** (the last 50 papers you voted on, including the ability to change a vote), **about** the project (user-editable guidelines for voting), and **account** information (for logging in and out). 
 
-
-
-<img src="/img/dock.svg" alt="tabs on webpage" style="zoom: 100%; display: block; margin: 0px auto;" />
+<img src="../img/dock.svg" alt="tabs on webpage" style="zoom: 100%; display: block; margin: 0px auto;" />
 
 Finally, it is notable that `CART` keeps track of "opened" abstracts in order to accommodate a come-and-go reviewing process. Once a vote is cast, `CART` will update the paper by logging the vote. This process (noted with red arrows in the architecture figure above) will cycle in a loop until eligible abstracts cease to exist. 
 
