@@ -18,9 +18,9 @@ Documentation for `CART` is available on [Read the Docs](https://nathanreitinger
 
 ### Overview
 
-Let's assume you just started a new SoK project, [like this one](https://conpro23.ieee-security.org/papers/reitinger-conpro23.pdf). The first step in the project will be to review conference publications from the past *n* years to determine if each paper is relevant to your SoK's particular topic. So you'd have a larger number of papers (something like *n=10,000*) to review, and will likely only be reading the titles and abstracts of these papers to determine relevancy. And you probably want one or more other people to review each paper as well, to get a less biased relevancy determination. 
+Let's assume you just started a new SoK project, [like this one](https://conpro23.ieee-security.org/papers/reitinger-conpro23.pdf). The first step in the project will be to review conference publications from the past *n* years to determine if each paper is relevant to your SoK's particular topic. So you'd have a larger number of papers (something like *n=10,000*) to review, and will likely only be reading the titles and abstracts of these papers to determine relevancy. And you probably want one or more team members to review each paper as well, to get a less biased relevancy determination. 
 
-What you need is a way to view a large number of paper titles and abstracts, "vote" on the relevancy for each paper, and a system to store and update these votes. Eneter `CART`: a system for voting on a large number of abstracts in teams.
+What you need is a way to view a large number of paper titles and abstracts, "vote" on the relevancy for each paper, and a system to store and update these votes. Enter `CART`: a system for voting on a large number of abstracts in teams.
 
 ### Functionality
 
