@@ -131,10 +131,10 @@ a Creative Commons Attribution 4.0 International License (CC BY
   these tools can be clunky (i.e., given the scale of papers in
   consideration) and not usable (i.e., reviewing hundreds of rows in a
   spreadsheet is error-prone and fatiguing). Other tools, like Atlas.ti
-  (<xref alt="Smit, 2002" rid="ref-smitU003A2002" ref-type="bibr">Smit,
-  2002</xref>) or maxQDA
-  (<xref alt="Godau, 2003" rid="ref-godauU003A2003" ref-type="bibr">Godau,
-  2003</xref>), could allow teams of researchers to “code” for
+  (<xref alt="Smit &amp; Scherman, 2021" rid="ref-smitU003A2021" ref-type="bibr">Smit
+  &amp; Scherman, 2021</xref>) or maxQDA
+  (<xref alt="Franzosi et al., 2013" rid="ref-FranzosiU003A2012" ref-type="bibr">Franzosi
+  et al., 2013</xref>), could allow teams of researchers to “code” for
   relevancy, but do not naturally accommodate dynamic participation
   (e.g., team members might not be able to review the same amount of
   papers) or variable review rates (e.g., sometimes you want all team
@@ -237,7 +237,7 @@ a Creative Commons Attribution 4.0 International License (CC BY
     </element-citation>
   </ref>
   <ref id="ref-reitingerU003A2021">
-    <element-citation publication-type="article-journal">
+    <element-citation publication-type="paper-conference">
       <person-group person-group-type="author">
         <name><surname>Reitinger</surname><given-names>Nathan</given-names></name>
         <name><surname>Mazurek</surname><given-names>Michelle L</given-names></name>
@@ -246,7 +246,6 @@ a Creative Commons Attribution 4.0 International License (CC BY
       <source>Proc. Priv. Enhancing Technol.</source>
       <year iso-8601-date="2021">2021</year>
       <volume>2021</volume>
-      <issue>3</issue>
       <uri>https://doi.org/10.2478/popets-2021-0056</uri>
       <pub-id pub-id-type="doi">10.2478/popets-2021-0056</pub-id>
       <fpage>453</fpage>
@@ -328,33 +327,39 @@ a Creative Commons Attribution 4.0 International License (CC BY
       <article-title>SoK: Considerations in measuring compliance with privacy regulations</article-title>
     </element-citation>
   </ref>
-  <ref id="ref-smitU003A2002">
+  <ref id="ref-smitU003A2021">
     <element-citation publication-type="article-journal">
       <person-group person-group-type="author">
         <name><surname>Smit</surname><given-names>Brigitte</given-names></name>
+        <name><surname>Scherman</surname><given-names>Vanessa</given-names></name>
       </person-group>
-      <article-title>Atlas. Ti for qualitative data analysis</article-title>
-      <source>Perspectives in education</source>
-      <publisher-name>University of the Free State</publisher-name>
-      <year iso-8601-date="2002">2002</year>
+      <article-title>Computer-assisted qualitative data analysis software for scoping reviews: A case of ATLAS.ti</article-title>
+      <source>International Journal of Qualitative Methods</source>
+      <publisher-name>SAGE Publications</publisher-name>
+      <year iso-8601-date="2021">2021</year>
       <volume>20</volume>
-      <issue>3</issue>
-      <fpage>65</fpage>
-      <lpage>75</lpage>
+      <pub-id pub-id-type="doi">10.1177/16094069211019140</pub-id>
+      <fpage>1</fpage>
+      <lpage>3</lpage>
     </element-citation>
   </ref>
-  <ref id="ref-godauU003A2003">
+  <ref id="ref-FranzosiU003A2012">
     <element-citation publication-type="article-journal">
       <person-group person-group-type="author">
-        <name><surname>Godau</surname><given-names>RI</given-names></name>
+        <name><surname>Franzosi</surname><given-names>Roberto</given-names></name>
+        <name><surname>Doyle</surname><given-names>Sophie</given-names></name>
+        <name><surname>McClelland</surname><given-names>Laura E</given-names></name>
+        <name><surname>Putnam Rankin</surname><given-names>Caddie</given-names></name>
+        <name><surname>Vicari</surname><given-names>Stefania</given-names></name>
       </person-group>
-      <article-title>Qualitative data analysis software: MAXqda</article-title>
-      <source>Qualitative Research Journal</source>
-      <year iso-8601-date="2003">2003</year>
-      <volume>4</volume>
-      <issue>1</issue>
-      <fpage>66</fpage>
-      <lpage>72</lpage>
+      <article-title>Quantitative narrative analysis software options compared: PC-ACE and CAQDAS (ATLAS.ti, MAXqda, and NVivo)</article-title>
+      <source>Quality &amp; Quantity</source>
+      <publisher-name>Springer</publisher-name>
+      <year iso-8601-date="2013">2013</year>
+      <volume>47</volume>
+      <pub-id pub-id-type="doi">10.1007/s11135-012-9714-3</pub-id>
+      <fpage>3219</fpage>
+      <lpage>3247</lpage>
     </element-citation>
   </ref>
 </ref-list>
