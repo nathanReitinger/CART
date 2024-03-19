@@ -766,7 +766,7 @@ def visualize():
         coders = {}
         for this_coder in provided_coders:
             coders[this_coder] = 0
-        # coders = {'konrad_kollnig': 0, 'nathan_reitinger': 0,  'madelyne_xiao': 0,'noah_apthorpe': 0, 'primal_wijesekera': 0}
+        # coders = {'user1': 0, 'user2': 0,  'user3': 0,'user4': 0, 'user5': 0}
         coders_list = coders.keys()
         coders_dones = []
         for coder in coders_list:
