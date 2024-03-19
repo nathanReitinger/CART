@@ -104,8 +104,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
   relevancy criteria
   (<xref alt="Franz et al., 2021" rid="ref-franzU003A2021" ref-type="bibr">Franz
   et al., 2021</xref>;
-  <xref alt="Reitinger &amp; Mazurek, n.d." rid="ref-reitingerU003Asok" ref-type="bibr">Reitinger
-  &amp; Mazurek, n.d.</xref>;
+  <xref alt="Reitinger &amp; Mazurek, 2023" rid="ref-reitingerU003Asok" ref-type="bibr">Reitinger
+  &amp; Mazurek, 2023</xref>;
   <xref alt="Singhal et al., 2023" rid="ref-singhalU003A2023" ref-type="bibr">Singhal
   et al., 2023</xref>;
   <xref alt="Thomas et al., 2021" rid="ref-thomasU003A2021" ref-type="bibr">Thomas
@@ -232,6 +232,7 @@ a Creative Commons Attribution 4.0 International License (CC BY
       <year iso-8601-date="2023">2023</year>
       <volume>63</volume>
       <issue>3</issue>
+      <uri>https://www.americanbar.org/content/dam/aba/publications/Jurimetrics/spring-2023/epsilon-differential-privacy-and-a-two-step-test-for-quantifying-reidentification-risk.pdf</uri>
       <fpage>263</fpage>
       <lpage>317</lpage>
     </element-citation>
@@ -319,12 +320,15 @@ a Creative Commons Attribution 4.0 International License (CC BY
     </element-citation>
   </ref>
   <ref id="ref-reitingerU003Asok">
-    <element-citation publication-type="article-journal">
+    <element-citation publication-type="paper-conference">
       <person-group person-group-type="author">
         <name><surname>Reitinger</surname><given-names>Nathan</given-names></name>
         <name><surname>Mazurek</surname><given-names>Michelle L</given-names></name>
       </person-group>
       <article-title>SoK: Considerations in measuring compliance with privacy regulations</article-title>
+      <source>7th workshop on technology and consumer protection (ConPro 2023)</source>
+      <year iso-8601-date="2023">2023</year>
+      <uri>https://conpro23.ieee-security.org/papers/reitinger-conpro23.pdf</uri>
     </element-citation>
   </ref>
   <ref id="ref-smitU003A2021">
