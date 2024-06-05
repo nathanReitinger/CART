@@ -199,7 +199,7 @@ def test_vote(examples_to_use, number_to_vote):
 if __name__ == "__main__":
 
     test_vote_small_results = test_vote(examples_to_use='-example_data_small', number_to_vote=5)
-    # test_vote_big_results = test_vote(examples_to_use='-example_data_big', number_to_vote=50)
+    test_vote_big_results = test_vote(examples_to_use='-example_data_big', number_to_vote=50)
     print("small example set vote testing---", test_vote_small_results)
-    # print("big example set vote testing---", test_vote_big_results)
+    print("big example set vote testing---", test_vote_big_results)
    
