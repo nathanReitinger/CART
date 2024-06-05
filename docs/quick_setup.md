@@ -17,7 +17,7 @@ cd CART
 
 > conda (tested with **conda 23.1.0**)
 
-	#### anaconda3 
+#### Anaconda3
 
 ```bash
 conda env create -f cart.yml
