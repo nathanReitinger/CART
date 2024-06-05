@@ -36,6 +36,8 @@ from datetime import (
 from multiprocessing import Pool  # speedup on processing
 import argparse  # initial setup
 from ngrok_flask_cart import run_with_ngrok # https://pypi.org/project/ngrok-flask-cart/
+import shutil # for demo version of app 
+import signal # resetting option
 
 PATH_TO_ABSTRACTS = "abstracts/*.csv"
 DEFAULT_PATH = "abstracts/"
@@ -98,8 +100,13 @@ def reader(filename):
     return pd.read_csv(filename)
 
 def shutdown_server():
+    '''https://stackoverflow.com/questions/15562446/how-to-stop-flask-application-without-using-ctrl-c'''
     ## this throws error because there is no return, but ends the session
-    os.kill(os.getpid(), signal.SIGINT)
+    # os.kill(os.getpid(), signal.SIGINT)
+    ## no error thrown here
+    sig = getattr(signal, "SIGKILL", signal.SIGTERM)
+    os.kill(os.getpid(), sig)
+
 ######## helpers
 
 
@@ -689,8 +696,7 @@ def reset():
     if DEBUG: print("reset: reset number reviewers per abstract")
     if DEBUG: print("reset: *done* removing all data, fresh restart")
     time.sleep(5)
-    if DEBUG: print(shutdown_server())
-    else: shutdown_server()
+    print(shutdown_server())
 
     # os._exit(0)
     # kill -9 "$(pgrep ngrok)"
@@ -980,13 +986,23 @@ if __name__ == "__main__":
 """
     )
 
+
+
     ### sanity check that we have what we need
     # there are papers in the directory
     how_many_papers = len(glob.glob(PATH_TO_ABSTRACTS))
     if DEBUG: print("how many papers am i seeing", len(glob.glob(PATH_TO_ABSTRACTS)))
     if how_many_papers == 0:
-        print("error, need to exit, there are no papers found in the '/abstracts' directory")
-        sys.exit()
+        print("uh oh, there are no papers found in the '/abstracts' directory")
+        demo = input("--> would you like to use demo-files? Answer 'yes' or 'no': ")
+        if demo == 'yes' or demo == 'y':
+            files = glob.glob('abstracts/-example_data_small/*')
+            for f in files:
+                print("using this file for demo:", f)
+                shutil.copy(f, DEFAULT_PATH)
+
+        else:    
+            sys.exit()
     # the papers are properly formed 
     check_n_abstracts = 30
     checker_count = 0
@@ -996,7 +1012,6 @@ if __name__ == "__main__":
 
         has_these_columns = set(temp_df.columns)
         should_have_these_columns = set(colnames)
-
         expected_types = {'unique_id': 'str', 'review_count': 'int', 'url': 'str', 'title': 'str', 'abstract': 'str', 'user': 'str', 'vote': 'str', 'in_progress': 'str', 'time': 'time'}
         for index,row in temp_df.iterrows():
             for col in colnames:
@@ -1047,7 +1062,8 @@ if __name__ == "__main__":
         "--coders",
         action="append",
         help="username of each coder: <<< -c user1 -c user2 >>> would be two users",
-        required=True,
+        # allow user to select demo coders for testing on a first run
+        required=False, 
     )
     parser.add_argument(
         "-r",
@@ -1078,9 +1094,15 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
     coder_IDs = args.coders
+    if coder_IDs is None:
+        want_demo = input("coders not selected. Quit by entering 'no' and re-run with < -c name1 -c name2 ... > or type 'yes' for test coders: ")
+        if want_demo == 'yes' or want_demo == 'y':
+            coder_IDs = ['name1', 'name2', 'name3']
+        else:
+            sys.exit()
     if coder_IDs:
         local_updater = open(CODERS, "w+")
-        for coder in args.coders:
+        for coder in coder_IDs:
             # store coders progress here
             local_updater.write(coder + "\n")
         local_updater.close()

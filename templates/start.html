@@ -169,7 +169,13 @@
         });
 
         $('#reset').click(function(event) {
-            if (confirm('Reset will remove all existing votes. Are you sure?')) {
+            if (confirm('Reset will remove all existing votes, and kill server. Are you sure?')) {
+
+                // show that page is dead
+                setTimeout(function(){
+                    location.reload();
+                }, 7000); //
+
                 document.body.innerHTML = `
 
                     <div class="loader_exit">
@@ -182,7 +188,7 @@
                           <li class="loader_exit__container__list__item">users </li>
                           <li class="loader_exit__container__list__item">abstracts </li>
                           <li class="loader_exit__container__list__item">ngrok </li>
-                          <li class="loader_exit__container__list__item">everything!</li>
+                          <li class="loader_exit__container__list__item">re-start server now!</li>
                         </ul>
                       </div>
                     </div>

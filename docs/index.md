@@ -10,7 +10,7 @@
 
 ## Documentation
 
-Documentation for CART is available on [Read the Docs](https://CART.readthedocs.io/en/stable/index.html).
+Documentation for CART is available on [Read the Docs](https://nathanreitinger.github.io/CART/).
 
 ## Contributing
 

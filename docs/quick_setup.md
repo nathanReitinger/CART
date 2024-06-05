@@ -15,9 +15,19 @@ cd CART
 
 ## Requirements 
 
+> conda (tested with **conda 23.1.0**)
+
+	#### 	anaconda3 
+
+```bash
+conda env create -f cart.yml
+```
 
 
-#### Ubuntu
+
+> pip (tested with **Python 3.10.0**)
+
+#### 	Ubuntu
 
 ```bash
 sudo apt-get update
@@ -25,14 +35,14 @@ sudo apt install python3-pip
 sudo pip3 install -r requirements.txt
 ```
 
-#### Windows
+#### 	Windows
 
 ```bash
 ==> Search for python3.n in Microsoft store
 sudo pip3 install -r requirements.txt
 ```
 
-#### MacOS
+#### 	MacOS
 
 ```bash
 ==> assume python3 is installed: brew install python3
@@ -45,8 +55,7 @@ sudo pip3 install -r requirements.txt
 
 > !!! WARNING
 >
->
-> `ngrok` is not required to run `CART` but is strongly recommended because it allows one team member to set up a server that can be accessible by any other team member.
+>`ngrok` is not required to run `CART` but is strongly recommended because it allows one team member to set up a server that can be accessible by any other team member (as opposed to localhost).
 
 
 
