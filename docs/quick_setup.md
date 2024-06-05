@@ -17,7 +17,7 @@ cd CART
 
 > conda (tested with **conda 23.1.0**)
 
-	#### 	anaconda3 
+	#### anaconda3 
 
 ```bash
 conda env create -f cart.yml
@@ -27,7 +27,7 @@ conda env create -f cart.yml
 
 > pip (tested with **Python 3.10.0**)
 
-#### 	Ubuntu
+#### Ubuntu
 
 ```bash
 sudo apt-get update
@@ -35,14 +35,14 @@ sudo apt install python3-pip
 sudo pip3 install -r requirements.txt
 ```
 
-#### 	Windows
+#### Windows
 
 ```bash
 ==> Search for python3.n in Microsoft store
 sudo pip3 install -r requirements.txt
 ```
 
-#### 	MacOS
+#### MacOS
 
 ```bash
 ==> assume python3 is installed: brew install python3
