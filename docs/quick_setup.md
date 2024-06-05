@@ -30,23 +30,23 @@ conda env create -f cart.yml
 #### Ubuntu
 
 ```bash
-sudo apt-get update
-sudo apt install python3-pip
-sudo pip3 install -r requirements.txt
+apt-get update
+apt install python3-pip
+pip3 install -r requirements.txt
 ```
 
 #### Windows
 
 ```bash
 ==> Search for python3.n in Microsoft store
-sudo pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 #### MacOS
 
 ```bash
 ==> assume python3 is installed: brew install python3
-sudo pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 
