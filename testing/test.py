@@ -60,9 +60,11 @@ def setup():
     # chrome_options.add_argument("download.default_directory=notices/")
     chrome_options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
     chrome_options.add_argument('--kiosk-logging.infoing')
+    # chrome_options.add_argument("user-data-dir=/nfshomes/nlr/bndb/scrape/tmp/" + str(time.time()))
     
-    browser = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
-    # browser = webdriver.Chrome(options=chrome_options)
+    # test
+
+    browser = webdriver.Chrome(options=chrome_options)
     return browser
 
 def replace(file_path, pattern, subst):
@@ -197,7 +199,7 @@ def test_vote(examples_to_use, number_to_vote):
 if __name__ == "__main__":
 
     test_vote_small_results = test_vote(examples_to_use='-example_data_small', number_to_vote=5)
-    test_vote_big_results = test_vote(examples_to_use='-example_data_big', number_to_vote=50)
+    # test_vote_big_results = test_vote(examples_to_use='-example_data_big', number_to_vote=50)
     print("small example set vote testing---", test_vote_small_results)
-    print("big example set vote testing---", test_vote_big_results)
+    # print("big example set vote testing---", test_vote_big_results)
    
