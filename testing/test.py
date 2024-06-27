@@ -22,6 +22,7 @@ from os import fdopen, remove
 from distutils.dir_util import copy_tree
 import glob 
 import threading
+import random 
 
 def isConnected():
     try:
@@ -81,6 +82,48 @@ def replace(file_path, pattern, subst):
     #Move new file
     move(abs_path, file_path)
 
+def clear_out_files():
+    os.chdir('../')
+    print("[ ] clear_out_files")
+
+    # clear out testing folder 
+    files = glob.glob('abstracts/*.csv')
+    for f in files:
+        print('removing! --> ', f)
+        os.remove(f)
+        time.sleep(.2)
+    files = glob.glob('abstracts/*.txt')
+    for f in files:
+        print('removing! --> ', f)
+        os.remove(f)
+    files = glob.glob('abstracts/*.lock')
+    for f in files:
+        print('removing! --> ',f)
+        os.remove(f)
+    try:
+        os.remove('abstracts/coders.txt')
+    except:
+        print("no coders.txt") 
+    try:
+        os.remove('abstracts/confetti.txt')
+    except:
+        print("no confetti.txt")
+    try:
+        os.remove('abstracts/ngrok_auth.txt')
+    except:
+        print("no ngrok_auth.txt") 
+    try:
+        os.remove('abstracts/ngrok_domain.txt')
+    except:
+        print("no ngrok_domain.txt")
+    try:
+        os.remove('abstracts/num_reviews_per_abstract.txt')
+    except:
+        print("no num_reviews_per_abstract.txt") 
+    print("[+] clear_out_files")
+    os.chdir('testing')
+    return
+
 def teardown():
     print("[ ] teardown")
 
@@ -89,8 +132,10 @@ def teardown():
     for f in files:
         print(f)
         os.remove(f)
-
-    os.remove("cart_testing.py")
+    try:
+        os.remove("cart_testing.py")
+    except:
+        print("no 'cart_testing.py' exists")
     print("[+] teardown")
     return
 
@@ -110,12 +155,15 @@ def test_vote(examples_to_use, number_to_vote):
             os.remove(f)
         
         # check that we have some files in the testing cateogry (copy over from -example_data_small)
+        print('[ ] grabbing files')
         files_to_copy = glob.glob('abstracts/' + examples_to_use + '/*')
         for f in files_to_copy:
             print(f)
-            shutil.copy(f, "abstracts/-testing/")
-        
-        # copy the file for testing 
+            shutil.copy(f, "abstracts/")
+        print('[+] done grabbing files')
+
+        # copy the file for testing
+        print('[ ] moving files into the right location for CART') 
         shutil.copyfile("cart.py", "cart_testing.py")
         file_path = 'cart_testing.py'
         pattern1 = 'PATH_TO_ABSTRACTS = "abstracts/*.csv"'
@@ -126,6 +174,7 @@ def test_vote(examples_to_use, number_to_vote):
         time.sleep(10)
         replace(file_path,pattern2,subst2)
         time.sleep(10)
+        print('[+] done moving files into the right location for CART') 
 
         print("[+] setup")
       
@@ -158,26 +207,34 @@ def test_vote(examples_to_use, number_to_vote):
         select = Select(browser.find_element('xpath', '/html/body/main/article/div/div/div/div/div/form/select'))
         # select by value 
         select.select_by_value('user1')
-        time.sleep(1)
+        time.sleep(10)
         actions = ActionChains(browser)
         actions.send_keys(Keys.ENTER)
         actions.perform()
         time.sleep(3) 
         print("[+] login DONE")
 
-        print("[ ] cast vote of yes on all abstracts in the small examples")
+        print("[ ] cast vote for all examples")
         # for each of the 5 abstracts, vote yes
         for i in range(number_to_vote):
-            ActionChains(browser).send_keys("y").perform()
-            time.sleep(3)  
+            if random.randint(0,10) >= 5:
+                print(i, "[yes] vote cast")
+                ActionChains(browser).send_keys("y").perform()
+            else:
+                print(i, "[no] vote cast")
+                ActionChains(browser).send_keys("n").perform()
+            time.sleep(1)  
         print("[+] cast vote of yes on all abstracts in the small examples DONE")
         # check that printed to screen is the done statement
 
         print("[ ] check successful vote casting")
         is_done_statement = int(browser.find_element(By.ID, 'ticker').get_attribute("data-value"))
+        print("[x] check successful vote casting")
 
         browser.quit()
+        print("[ ] teardown starting")
         teardown()
+        print("[x] teardown completed")
         # we are in testing folder, go back one step 
         os.chdir(os.getcwd() + '/testing')
 
@@ -193,13 +250,30 @@ def test_vote(examples_to_use, number_to_vote):
         teardown()
         # we are in testing folder, go back one step 
         os.chdir(os.getcwd() + '/testing')
-
-        return ("test_vote: fail")
+        sys.exit()
 
 if __name__ == "__main__":
+    print(
+"""\n\n
+# TESTING IS FOR DEVELOPERS ONLY, USE AT YOUR OWN RISK 
+#
+#
+# ,-. ,-. ,-. |- 
+# |   ,-| |   |  
+# `-' `-^ '   `' 
+#
+#
+# TESTING IS FOR DEVELOPERS ONLY, USE AT YOUR OWN RISK 
+\n\n"""
+    )
 
-    test_vote_small_results = test_vote(examples_to_use='-example_data_small', number_to_vote=5)
-    test_vote_big_results = test_vote(examples_to_use='-example_data_big', number_to_vote=50)
-    print("small example set vote testing---", test_vote_small_results)
-    print("big example set vote testing---", test_vote_big_results)
+    check_with_user = input("--------------------------------------------\nTesting uses 'clear_out_files()' which \nremoves all files in the 'abstracts/*.*'\nfolder. Ensure you have safely copied \nany work!\n--------------------------------------------\n\n\n\tEnter 'yes' to continue: ")
+    if check_with_user == 'yes':
+        clear_out_files()
+        test_vote_small_results = test_vote(examples_to_use='-example_data_small', number_to_vote=5)
+        # test_vote_big_results = test_vote(examples_to_use='-example_data_big', number_to_vote=50)
+        clear_out_files()
+        print("small example set vote testing---", test_vote_small_results)
+        # print("big example set vote testing---", test_vote_big_results)
+
    

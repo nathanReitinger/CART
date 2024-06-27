@@ -2,47 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://CART.readthedocs.io/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://CART.readthedocs.io/CODE_OF_CONDUCT/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://CART.readthedocs.io/CONTRIBUTING/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://CART.readthedocs.io/architecture/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://CART.readthedocs.io/assumptions/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://CART.readthedocs.io/development/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://CART.readthedocs.io/gamification/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://CART.readthedocs.io/options/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://CART.readthedocs.io/quick_setup/</loc>
-         <lastmod>2024-06-19</lastmod>
+         <lastmod>2024-06-27</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
