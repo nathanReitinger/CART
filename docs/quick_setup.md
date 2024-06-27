@@ -20,7 +20,8 @@ cd CART
 #### Anaconda3
 
 ```bash
-conda env create -f cart.yml
+--UNIX: conda env create -f cart.yml 
+--WINDOWS: conda env create -f cart-windows.yml
 ```
 
 
@@ -45,7 +46,7 @@ pip3 install -r requirements.txt
 #### MacOS
 
 ```bash
-==> assume python3 is installed: brew install python3
+==> assuming python3 is installed: brew install python3
 pip3 install -r requirements.txt
 ```
 

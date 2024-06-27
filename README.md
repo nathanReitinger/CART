@@ -10,17 +10,19 @@
 
 # Culling Abstacts for Relevancy in Teams
 
-`CART` provides a way for teams of researchers to "cull" through a large set of papers when conducting a systematic review—also known as an "SoK." `CART` uses `ngrok` (a free service for temporary website creation), to zero-step the startup time for collaborative relevancy checking. 
+`CART` provides a way for teams of researchers to "cull" through a large set of papers when conducting a systematic review—also known as an "SoK." `CART` uses `ngrok` (a free service for temporary website creation), to zero-step the startup time for collaborative relevancy checking—you may also run the service locally on localhost for testing or point a server at the service. 
 
 ### Documentation
 
 Documentation for `CART` is available on [Read the Docs](https://nathanreitinger.github.io/CART/).
 
-### Overview
+### Motivation
 
-Let's assume you just started a new SoK project, [like this one](https://conpro23.ieee-security.org/papers/reitinger-conpro23.pdf). The first step in the project will be to review conference publications from the past *n* years to determine if each paper is relevant to your SoK's particular topic. So you'd have a larger number of papers to review (something like *n=10,000*), and will likely only be reading the titles and abstracts of these papers to determine relevancy. And you probably want one or more team members to review each paper as well, to get a less biased relevancy determination. 
+Let's assume you just started a new SoK project, [like this one](https://conpro23.ieee-security.org/papers/reitinger-conpro23.pdf). The first step in the project will be to review conference publications from the past *n* years to determine if each paper is relevant to your SoK's particular topic. So you'd have a larger number of papers to review (something like *n=10,000*), and you will likely only be reading the titles and abstracts of these papers to determine relevancy; you also likely want one or more team members to review each paper (to get a less biased relevancy determination or split the work up). What you need is a way to review a large number of paper titles and abstracts, "vote" on the relevancy of each paper, and have a system to keep track of your votes. 
 
-What you need is a way to view a large number of paper titles and abstracts, "vote" on the relevancy for each paper, and have a system keep track of your votes. Enter `CART`: a system for voting on a large number of abstracts in teams.
+
+
+Enter `CART`: a system for voting on a large number of abstracts in teams.
 
 ### Functionality
 
@@ -29,7 +31,9 @@ What you need is a way to view a large number of paper titles and abstracts, "vo
 ```
 git clone https://github.com/nathanReitinger/CART
 cd CART
-conda env create -f cart.yml
+--UNIX: conda env create -f cart.yml 
+--WINDOWS: conda env create -f cart-windows.yml
+conda activate cart
 python3 cart.py -c user1 -c user2 <== two users, using localhost
 ```
 

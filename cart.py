@@ -22,6 +22,7 @@ from flask_session import Session  # cookie and other local info storage
 from tempfile import mkdtemp  # related to error on flask session and permissions
 from filelock import Timeout, FileLock  # https://py-filelock.readthedocs.io/en/latest/
 import glob, os  # handling all abstract files as pandas df, and file actions with os
+import os.path
 import json, signal # handling shutdown
 import pandas as pd  # for csv rows per grader
 import numpy as np  # data analysis
@@ -39,9 +40,11 @@ from ngrok_flask_cart import run_with_ngrok # https://pypi.org/project/ngrok-fla
 import shutil # for demo version of app 
 import signal # resetting option
 
-PATH_TO_ABSTRACTS = "abstracts/*.csv"
-DEFAULT_PATH = "abstracts/"
+
+PATH_TO_ABSTRACTS = os.path.join( os.path.dirname(os.path.realpath(__file__)), "abstracts", "*.csv" ) # "abstracts/*.csv"
+DEFAULT_PATH = os.path.join( os.path.dirname(os.path.realpath(__file__)), "abstracts", "" ) #"abstracts/"
 DEBUG = False
+
 
 
 ############################################# ------------------------------------file structure
@@ -125,7 +128,7 @@ app.secret_key = "*KRUD?zrAJ|jX=L]]y=[T)P@]<UEe'"
 
 Session(app)
 
-def start_lock(file_path):
+def start_lock(file_path, unique_id=None):
 
     if DEBUG:
         print("[-] starting lock process now")
@@ -133,6 +136,15 @@ def start_lock(file_path):
     file_path = file_path
     lock_path = file_path + ".lock"
     lock = FileLock(lock_path, timeout=timeout_for_locks)
+    if DEBUG: print(lock_path)
+    if DEBUG: print(file_path)
+    if os.path.isfile(lock_path) == False:
+        print("[-] GENERAL CALL: possibly windows machine, no .lock file created, use workaround by creating one")
+        os.chdir('abstracts')
+        with open(str(unique_id)+".lock", "w+") as f: f.close()
+        os.chdir('../')
+        if DEBUG: print("DONE windows patch\n\n")
+        if DEBUG: print(os.path.isfile(lock_path))
     try:
         with lock.acquire():
             temp_df = pd.read_csv(file_path, names=colnames, header=None)
@@ -190,6 +202,7 @@ def start_lock(file_path):
             )
         to_ret["success"] = False
         to_ret["lock"] = None
+    if DEBUG: print(os.path.isfile(lock_path))
     return to_ret
 
 
@@ -329,7 +342,7 @@ def index():
             session["user_counter"] = len(user_list)
 
             for f in all_files:
-                if os.path.isfile(f + ".lock"):
+                if os.path.isfile(f.replace(".csv",'') + ".lock"):
                     temp_df = pd.read_csv(
                         f, names=colnames, header=None
                     )  # bottleneck here
@@ -398,7 +411,7 @@ def index():
                 ):
                     if DEBUG:
                         print("----> found potential abstract, checking locks")
-                    ret = start_lock(f)
+                    ret = start_lock(f, current_id)
                     if ret["success"] == True:
                         if DEBUG:
                             print(ret)
@@ -416,10 +429,10 @@ def index():
                         parsed_time = moment.unix(parsed_time)
                         if DEBUG:
                             try:
-                                print(parsed_time.format("YYYY-M-D h:m A"))
+                                print(parsed_time.format("YYYY-M-D hh:m A"))
                             except:
                                 print("maybe error in computer interpreting 'A'")
-                                print(parsed_time.format("YYYY-M-D H:m"))
+                                print(parsed_time.format("YYYY-M-D HH:m"))
                         if DEBUG:
                             print("----> !! success, serving abstract now")
 
@@ -525,6 +538,14 @@ def serviceidlookup():
     file_path = this_path
     lock_path = file_path + ".lock"
     lock = FileLock(lock_path, timeout=timeout_for_locks)
+    if os.path.isfile(lock_path) == False:
+        print("[-] SPECIFIC CALL: possibly windows machine, no .lock file created, use workaround by creating one")
+        os.chdir('abstracts')
+        with open(str(serviceid)+".lock", "w+") as f: f.close()
+        os.chdir('../')
+        if DEBUG: print("DONE windows patch\n\n")
+        if DEBUG: print(os.path.isfile(lock_path))
+
     try:
         with lock.acquire():
             temp_df = pd.read_csv(this_path, names=colnames, header=None)
@@ -661,7 +682,7 @@ def reset():
     session.clear()
     # time.sleep(2)
     for file in glob.glob(PATH_TO_ABSTRACTS):
-        if os.path.isfile(file + ".lock"):
+        if os.path.isfile(file.replace(".csv",'') + ".lock"):
             temp_df = pd.read_csv(file, names=colnames, header=None)
             print(temp_df.head())
             temp_df = temp_df.iloc[1:]
@@ -669,7 +690,7 @@ def reset():
             tmp = [str(first_row['unique_id']), '0', first_row['url'], first_row['title'], first_row['abstract'], 'none', 'none', 'no', first_row['time']]
             new_df = pd.DataFrame([tmp], columns=colnames)
             new_df.to_csv(file, index=False, header=True)
-            os.remove(file + ".lock") 
+            os.remove(file.replace(".csv",'') + ".lock") 
             if DEBUG: print("reset: reset ", file)
     # remove metadata 
     curr_coders = [line.rstrip() for line in open(CODERS)]
@@ -818,12 +839,16 @@ def history():
             print("getting all abstracts")
         # get all abstracts
         for file in glob.glob(PATH_TO_ABSTRACTS):
-            if os.path.isfile(file + ".lock"):
+            print(file)
+            print(file)
+            if os.path.isfile(file.replace(".csv",'') + ".lock"):
+                if DEBUG: print(file)
                 all_dfs.append(file)
         if DEBUG:
             print("---mid done with getting list")
         pool = Pool(2)  # number of cores you want to use
         df_list = pool.map(reader, all_dfs)  # creates a list of the loaded df's
+        if DEBUG: print(df_list)
         df = pd.concat(df_list)  # concatenates all the df's into a single df
         # df = pd.concat(all_dfs)
         if DEBUG:
@@ -849,7 +874,7 @@ def history():
             as_str = row["time"]
             # this_time = row['time']
             parsed_time = moment.unix(float(as_str))
-            simple_time = parsed_time.format("YYYY-M-D H:m")
+            simple_time = parsed_time.format("YYYY-M-D HH:m")
 
             # do not show older in-list items
             # if you want to keep the inprogress one: and 'no' in row['in_progress']
@@ -936,8 +961,11 @@ def editChoice():
             print("<> abstract to edit:", abstract_id)
         this_path = default_path + str(abstract_id) + ".csv"
         file_path = this_path
-        lock_path = file_path + ".lock"
+        lock_path = file_path.replace(".csv",'') + ".lock"
         lock = FileLock(lock_path, timeout=timeout_for_locks)
+        if DEBUG: print(lock_path)
+        if DEBUG: print(file_path)
+
         try:
             with lock.acquire():
                 temp_df = pd.read_csv(this_path, names=colnames, header=None)
@@ -955,11 +983,23 @@ def editChoice():
                         temp_df.at[index, "vote"] = revised_choice
                         temp_df.at[index, "time"] = str(time.time())
                 temp_df.to_csv(file_path, index=False, header=False)
-                if DEBUG:
-                    print("[+] successful lock process, returning now")
-                return redirect(
-                    url_for("history", _scheme=HTTP_VARIANT, _external=True)
-                )
+                if DEBUG: print("[+] successful lock process, returning now")
+
+            if DEBUG: print("this should be false", os.path.isfile(lock_path))
+            if os.path.isfile(lock_path) == False:
+                print("[-] UPDATING CALL: possibly windows machine, no .lock file created, use workaround by creating one")
+                os.chdir('abstracts')
+                print(abstract_id)
+                with open(str(abstract_id)+".lock", "w+") as f: f.close()
+                os.chdir('../')
+                if DEBUG: print("DONE windows patch\n\n")
+                if DEBUG: print(os.path.isfile(lock_path))
+
+            return redirect(
+                url_for("history", _scheme=HTTP_VARIANT, _external=True)
+            )
+
+
 
         except Timeout:
             if DEBUG:
@@ -1034,7 +1074,7 @@ if __name__ == "__main__":
                     try: 
                         as_str = row[col]
                         parsed_time = moment.unix(float(as_str))
-                        simple_time = parsed_time.format("YYYY-M-D H:m")
+                        simple_time = parsed_time.format("YYYY-M-D HH:m")
                     except:
                         print("error, need to exit, you have columns in your .csv paper files that do not conform. You should be passing in ", col, "as", expected_types[col], "See documentation: assumptions")
                         sys.exit()
