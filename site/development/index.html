@@ -446,6 +446,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#program-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Program overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assumptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -508,28 +532,25 @@
 <p>Testing scripts are found in the <code>/testing</code> folder. The <code>test.py</code> program</p>
 <pre><code class="language-bash">python3 test.py
 </code></pre>
-<p>will do the following:</p>
+<h3 id="program-overview">Program overview</h3>
 <ul>
-<li>use Selenium for testing</li>
+<li>uses Selenium for testing</li>
 <li>setup <code>CART</code> by moving test abstracts into the right folder</li>
 <li>abstracts will be moved into the <code>abstracts/-testing/</code> folder (and cleaned up when <code>test.py</code> exits) </li>
 <li>use a "small" set of abstracts</li>
-<li>login as a provided user and vote on 5 abstracts (<code>number_to_vote</code> argument)<ul>
+<li>login as a temp user and vote on 5 abstracts (<code>number_to_vote</code> argument)<ul>
 <li>checking login </li>
 <li>checking vote casting</li>
 <li>checking "done" or completed on all abstracts voted on</li>
 <li>teardown to reset abstracts</li>
 </ul>
 </li>
-<li>use a "big" set of abstracts </li>
-<li>login as a provided user and vote on 50 abstracts (<code>number_to_vote</code> argument)<ul>
-<li>checking login </li>
-<li>checking vote casting</li>
-<li>checking "done" or completed on all abstracts voted on</li>
-<li>teardown to reset abstracts</li>
+<li>print results of tests to the terminal </li>
 </ul>
-</li>
-<li>print results of tests to terminal </li>
+<h3 id="assumptions">Assumptions</h3>
+<ul>
+<li><code>conda</code> is accessible from your system's default terminal (i.e., <code>conda</code> is on path)</li>
+<li>a chrome browser is installed </li>
 </ul>
 
 
