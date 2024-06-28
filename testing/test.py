@@ -71,8 +71,8 @@ def setup():
 def replace(file_path, pattern, subst):
     #Create temp file
     fh, abs_path = mkstemp()
-    with fdopen(fh,'w') as new_file:
-        with open(file_path) as old_file:
+    with fdopen(fh,'w', encoding='utf8') as new_file:
+        with open(file_path, encoding='utf8') as old_file:
             for line in old_file:
                 new_file.write(line.replace(pattern, subst))
     #Copy the file permissions from the old file to the new file
@@ -133,9 +133,9 @@ def teardown():
         print(f)
         os.remove(f)
     try:
-        os.remove("cart_testing.py")
+        os.remove("cartTesting.py")
     except:
-        print("no 'cart_testing.py' exists")
+        print("no 'cartTesting.py' exists")
     print("[+] teardown")
     return
 
@@ -164,8 +164,8 @@ def test_vote(examples_to_use, number_to_vote):
 
         # copy the file for testing
         print('[ ] moving files into the right location for CART') 
-        shutil.copyfile("cart.py", "cart_testing.py")
-        file_path = 'cart_testing.py'
+        shutil.copyfile("cart.py", "cartTesting.py")
+        file_path = 'cartTesting.py'
         pattern1 = 'PATH_TO_ABSTRACTS = "abstracts/*.csv"'
         pattern2 = 'DEFAULT_PATH = "abstracts/"'
         subst1 = 'PATH_TO_ABSTRACTS = "abstracts/-testing/*.csv"'
@@ -179,10 +179,15 @@ def test_vote(examples_to_use, number_to_vote):
         print("[+] setup")
       
         print("[ ] load up CART")
+        print(os.getcwd())
 
         # start up CART, hide output 
-        subprocess.Popen(['stty', '-tostop'])
-        proc = subprocess.Popen(["python3","cart_testing.py","-c", "user1", "-c", "user2", "-p", "8083", "-r", "2"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+        # subprocess.Popen(['stty', '-tostop'])
+        # windows patch
+        if os.name == 'nt': 
+            proc = subprocess.Popen(['conda', 'run', '-n', 'cart', "python","cartTesting.py","-c", "user1", "-c", "user2", "-p", "8083", "-r", "2"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+        else:
+            proc = subprocess.Popen(['conda', 'run', '-n', 'cart', "python3","cartTesting.py","-c", "user1", "-c", "user2", "-p", "8083", "-r", "2"], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         time.sleep(10)
         print("[+] load up CART DONE")
 
@@ -199,7 +204,7 @@ def test_vote(examples_to_use, number_to_vote):
 
         print("[ ] login")
         browser.get('http://127.0.0.1:8083/')
-        time.sleep(15)
+        time.sleep(5)
         
 
         ## check that you can vote on all abstracts in small example and then be done 
@@ -209,8 +214,13 @@ def test_vote(examples_to_use, number_to_vote):
         select.select_by_value('user1')
         time.sleep(10)
         actions = ActionChains(browser)
-        actions.send_keys(Keys.ENTER)
+        if os.name == 'nt': 
+            actions.send_keys(Keys.RETURN)
+        else:
+            actions.send_keys(Keys.ENTER)
         actions.perform()
+        if os.name == 'nt':
+            submit = browser.find_element('xpath', '/html/body/main/article/div/div[1]/div/div/div/form/input').click()
         time.sleep(3) 
         print("[+] login DONE")
 
@@ -223,7 +233,7 @@ def test_vote(examples_to_use, number_to_vote):
             else:
                 print(i, "[no] vote cast")
                 ActionChains(browser).send_keys("n").perform()
-            time.sleep(1)  
+            time.sleep(2)  
         print("[+] cast vote of yes on all abstracts in the small examples DONE")
         # check that printed to screen is the done statement
 

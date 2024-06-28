@@ -29,22 +29,21 @@ Testing scripts are found in the `/testing` folder. The `test.py` program
 python3 test.py
 ```
 
-will do the following:
+### Program overview
 
-- use Selenium for testing
+- uses Selenium for testing
 - setup `CART` by moving test abstracts into the right folder
   - abstracts will be moved into the `abstracts/-testing/` folder (and cleaned up when `test.py` exits) 
 - use a "small" set of abstracts
-  - login as a provided user and vote on 5 abstracts (`number_to_vote` argument)
+  - login as a temp user and vote on 5 abstracts (`number_to_vote` argument)
     - checking login 
     - checking vote casting
     - checking "done" or completed on all abstracts voted on
     - teardown to reset abstracts
-- use a "big" set of abstracts 
-  - login as a provided user and vote on 50 abstracts (`number_to_vote` argument)
-    - checking login 
-    - checking vote casting
-    - checking "done" or completed on all abstracts voted on
-    - teardown to reset abstracts
-- print results of tests to terminal 
+- print results of tests to the terminal 
+
+### Assumptions
+
+- `conda` is accessible from your system's default terminal (i.e., `conda` is on path)
+- a chrome browser is installed 
 
