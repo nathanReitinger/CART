@@ -44,7 +44,7 @@ Surprisingly, software to support this first step of paper culling is lacking. E
 
 
 
-![Architecture of `CART`.\label{fig:arch}](../docs/img/architecture.svg)
+![Architecture of `CART`.\label{fig:arch}](../docs/img/architecture.png)
 
 *First*, `CART` runs a Flask application responsible for serving and updating papers (i.e., represented as an abstract, title, URL, and a few metadata fields). A team member will only be served an abstract that they have not seen before, needs votes, has not been flagged as "not" a research paper (i.e., a proceedings introduction, extended abstract, or similar document), and is not being viewed by another user. After a vote is cast, `CART`  will update the paper entry to log who voted, what their vote was, and how many votes have been cast for the paper. This process of serving and updating papers will loop until there are no more eligible papers available. 
 
