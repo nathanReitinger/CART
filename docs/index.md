@@ -4,7 +4,7 @@
 
 
 
-# Culling Abstacts for Relevancy in Teams
+# Culling Abstracts for Relevancy in Teams
 
 `CART` provides a way for teams of researchers to "cull" through a large set of papers when conducting a systematic review&#151;also known as an SoK. `CART` uses `ngrok` (a free service for temporary website creation), to zero-step the startup time for collaborative relevancy checking. `CART` also tries to foster efficient paper reviewing by gamifying the reviewing process (e.g., creating periodic rewards for achievements) and prioritizing data preservation (e.g., storing data in single CSV files instead of a database because these files are more easily inspected and corrected).  
 

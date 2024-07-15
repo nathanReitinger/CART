@@ -24,7 +24,7 @@ bibliography: paper.bib
 
 # Summary
 
-`CART` (Culling Abstacts for Relevancy in Teams) provides a way for a team of individuals to complete the first step common to most systematization of knowledge (SoK) projects[^1]: culling, in teams, a large set of research papers (i.e., titles and abstracts) based on per-project relevancy criteria. Existing software solutions either do not fit this need in a usable way—leading to error-prone voting—or do not offer the necessary functionality to work on the problem effectively.
+`CART` (Culling Abstracts for Relevancy in Teams) provides a way for a team of individuals to complete the first step common to most systematization of knowledge (SoK) projects[^1]: culling, in teams, a large set of research papers (i.e., titles and abstracts) based on per-project relevancy criteria. Existing software solutions either do not fit this need in a usable way—leading to error-prone voting—or do not offer the necessary functionality to work on the problem effectively.
 
 `CART` provides both functionality and usability: *Functionally*, `CART` accommodates teams of any size (i.e., accommodating race conditions), review requirements of any number (e.g., mandating that each paper is reviewed by *n* team members), and dynamic participation rates (e.g., team members may participate in as little or as much reviewing as they like). *Usability-wise*, `CART` provides a gamified user interface, making the process of reviewing papers easier, and therefore more accurate and efficient. 
 
