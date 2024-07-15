@@ -72,30 +72,30 @@ a Creative Commons Attribution 4.0 International License (CC BY
 <body>
 <sec id="summary">
   <title>Summary</title>
-  <p><monospace>CART</monospace> (Culling Abstacts for Relevancy in
+  <p><monospace>CART</monospace> (Culling Abstracts for Relevancy in
   Teams) provides a way for a team of individuals to complete the first
-  step common to most SoK
+  step common to most systematization of knowledge (SoK)
   projects<xref ref-type="fn" rid="fn1">1</xref>: culling, in teams, a
   large set of research papers (i.e., titles and abstracts) based on
   per-project relevancy criteria. Existing software solutions either do
   not fit this need in a usable way—leading to error-prone voting—or do
-  not offer the necessary functionality to work on this problem
+  not offer the necessary functionality to work on the problem
   effectively.</p>
-  <p><monospace>CART</monospace> provides both functionaity and
+  <p><monospace>CART</monospace> provides both functionality and
   usability: <italic>Functionally</italic>, <monospace>CART</monospace>
   accommodates teams of any size (i.e., accommodating race conditions),
-  review requirements of any number (e.g., madating that each paper is
+  review requirements of any number (e.g., mandating that each paper is
   reviewed by <italic>n</italic> team members), and dynamic
   participation rates (e.g., team members may participate in as little
   or as much reviewing as they like). <italic>Usability-wise</italic>,
   <monospace>CART</monospace> provides a gamified user interface, making
-  the process of reviewing papers easier and therefore more accurate and
-  more efficient.</p>
+  the process of reviewing papers easier, and therefore more accurate
+  and efficient.</p>
 </sec>
 <sec id="statement-of-need">
-  <title>Statement of need</title>
+  <title>Statement of Need</title>
   <p>A systematization of knowledge or systematic review paper is a
-  popular class of paper found across multiple disciplines: medicine,
+  popular type of paper found across multiple disciplines: medicine,
   computer science, sociology, psychology, economics, political science,
   marketing, and genetics. This type of paper most commonly involves a
   two-stage process. In the first stage, researchers gather a large set
@@ -109,28 +109,30 @@ a Creative Commons Attribution 4.0 International License (CC BY
   <xref alt="Singhal et al., 2023" rid="ref-singhalU003A2023" ref-type="bibr">Singhal
   et al., 2023</xref>;
   <xref alt="Thomas et al., 2021" rid="ref-thomasU003A2021" ref-type="bibr">Thomas
-  et al., 2021</xref>). For example, if a researcher wanted to learn
-  about legally-sufficient data sanitization tools
+  et al., 2021</xref>). For example, imagine a researcher who wanted to
+  learn about legally-sufficient data sanitization tools
   (<xref alt="Bellovin et al., 2019" rid="ref-bellovinU003A2019" ref-type="bibr">Bellovin
-  et al., 2019</xref>), a paper on the prevalence of a particular web
+  et al., 2019</xref>). A paper on the prevalence of a particular web
   tracking technique like canvas fingerprinting
   (<xref alt="Reitinger &amp; Mazurek, 2021" rid="ref-reitingerU003A2021" ref-type="bibr">Reitinger
-  &amp; Mazurek, 2021</xref>) would be marked as irrelevant, but a paper
-  on statutory differentially privacy requirements
+  &amp; Mazurek, 2021</xref>) would be marked as
+  <italic>irrelevant</italic>, but a paper on statutory differential
+  privacy requirements
   (<xref alt="Reitinger &amp; Deshpande, 2023" rid="ref-reitingerU003A2023" ref-type="bibr">Reitinger
-  &amp; Deshpande, 2023</xref>) would be marked as relevant. After this
-  first step is complete—often resulting in a set of around 100
-  papers—most researchers move on to analyzing papers in-depth, using
-  qualitative coding techniques well-fit by existing software.</p>
+  &amp; Deshpande, 2023</xref>) would be marked as
+  <italic>relevant</italic>. After this first step is complete—often
+  resulting in a set of around 100 papers—most researchers then move on
+  to analyzing papers in-depth, the second stage, using qualitative
+  coding techniques well-fit by existing software.</p>
   <p>Surprisingly, software to support this first step of paper culling
-  is currently lacking. Existing tools are either too generalist
-  (resulting in ineffective paper reviewing) or too fine-tuned
-  (resulting in tradeoffs impacting functionality). For example,
-  generalist tools like Microsoft Excel or Google Sheets could allow
-  teams of researchers to check the relevancy of snippets of text, but
-  these tools can be clunky (i.e., given the scale of papers in
-  consideration) and not usable (i.e., reviewing hundreds of rows in a
-  spreadsheet is error-prone and fatiguing). Other tools, like Atlas.ti
+  is lacking. Existing tools are either too generalist (i.e., resulting
+  in ineffective paper reviewing) or too fine-tuned (i.e., resulting in
+  tradeoffs impacting functionality). Generalist tools like Microsoft
+  Excel or Google Sheets could allow teams of researchers to check the
+  relevancy of snippets of text, but these tools can be clunky (i.e.,
+  given a scale of more than 10,000 papers in consideration) and not
+  usable (i.e., reviewing hundreds of rows in a spreadsheet is
+  error-prone and fatiguing). Other tools, like Atlas.ti
   (<xref alt="Smit &amp; Scherman, 2021" rid="ref-smitU003A2021" ref-type="bibr">Smit
   &amp; Scherman, 2021</xref>) or maxQDA
   (<xref alt="Franzosi et al., 2013" rid="ref-FranzosiU003A2012" ref-type="bibr">Franzosi
@@ -139,7 +141,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
   (e.g., team members might not be able to review the same amount of
   papers) or variable review rates (e.g., sometimes you want all team
   members to review all papers, and sometimes you want at least two, but
-  you do not set who those team members are).</p>
+  you do not set who those team members are). Enter
+  <monospace>CART</monospace>.</p>
 </sec>
 <sec id="cart">
   <title><monospace>CART</monospace></title>
@@ -152,10 +155,10 @@ a Creative Commons Attribution 4.0 International License (CC BY
   without requiring server space (although this is certainly possible
   with an appropriately provisioned environment) and easily tunable for
   a project’s specific needs.</p>
-  <p><monospace>CART</monospace> utilizes Flask, ngrok, and a web
-  interface to allow one team member to create a server that other team
-  members can access. As shown in
-  <xref alt="[fig:arch]" rid="figU003Aarch">[fig:arch]</xref>,
+  <p><monospace>CART</monospace> utilizes Flask,
+  <monospace>ngrok</monospace>, and a web interface to allow one team
+  member to create a server that other team members can access. As shown
+  in <xref alt="[fig:arch]" rid="figU003Aarch">[fig:arch]</xref>,
   <monospace>CART</monospace> has two primary functions.</p>
   <fig>
     <caption><p>Architecture of
@@ -166,14 +169,16 @@ a Creative Commons Attribution 4.0 International License (CC BY
   <p><italic>First</italic>, <monospace>CART</monospace> runs a Flask
   application responsible for serving and updating papers (i.e.,
   represented as an abstract, title, URL, and a few metadata fields). A
-  team member will only be served an abstract that they have not seen
-  before, needs votes, has not been flagged as “not” a research paper
-  (i.e., a proceedings or similar document), and is not being viewed by
-  another user. After a vote is cast, the Flask application will update
-  the paper to log who voted, what their vote was, and how many votes
-  have been cast for the paper. This process of serving and updating
-  papers will loop until there are no more eligible papers
-  available.</p>
+  team member will only be served an abstract if: (1) the paper is not
+  one that the team member has seen before: (2) the paper has not yet
+  met the required amount of votes per paper; (3) the paper has not been
+  flagged as “not” a research paper (i.e., a proceedings introduction,
+  extended abstract, or similar document); and (4) the paper is not
+  currently being viewed by another user. After a vote is cast,
+  <monospace>CART</monospace> will update a log noting who voted, what
+  their vote was, and how many votes have been cast for the paper. This
+  process of serving and updating papers will loop until there are no
+  more eligible papers available.</p>
   <fig>
     <caption><p>Web interface tabs: home, progress, history,
     information, and
@@ -186,8 +191,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
   gamified user experience for reviewing papers. The web interface makes
   voting on a paper simple (i.e., button click or keyboard press),
   allows users to set personal goals, and rewards (with confetti) users
-  on every 50th (or set by the team) vote submitted. The web interface
-  also includes tabs
+  on every 50th (changeable) vote submitted. The web interface also
+  includes tabs
   (<xref alt="[fig:tabs]" rid="figU003Atabs">[fig:tabs]</xref>) for
   <bold>voting</bold> on papers (home), viewing the team’s
   <bold>progress</bold> (bar chart, total vote counts), viewing personal
@@ -197,7 +202,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
   for voting), and viewing <bold>account</bold> details (logging in and
   out). Moreover, the web app is optimized to provide information in a
   timely fashion (e.g., storing ‘open’ papers in logs rather than
-  reviewing the full corpus of possible papers to find open papers).</p>
+  reviewing the full corpus of possible papers to find open papers) to
+  enable speedy reviewing.</p>
 </sec>
 </body>
 <back>
@@ -227,7 +233,7 @@ a Creative Commons Attribution 4.0 International License (CC BY
         <name><surname>Reitinger</surname><given-names>Nathan</given-names></name>
         <name><surname>Deshpande</surname><given-names>Amol</given-names></name>
       </person-group>
-      <article-title>Epsilon-differential privacy, and a twostep test for quantifying reidentification risk</article-title>
+      <article-title>Epsilon-differential privacy, and a two-step test for quantifying reidentification risk</article-title>
       <source>Jurimetrics: The Journal of Law, Science &amp; Technology</source>
       <publisher-name>HeinOnline</publisher-name>
       <year iso-8601-date="2023">2023</year>
@@ -370,8 +376,8 @@ a Creative Commons Attribution 4.0 International License (CC BY
 </ref-list>
 <fn-group>
   <fn id="fn1">
-    <label>1</label><p>These projects are also called systematic review
-    projects.</p>
+    <label>1</label><p>These projects are also called systematic
+    reviews.</p>
   </fn>
 </fn-group>
 </back>
