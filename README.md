@@ -53,6 +53,9 @@ python3 cart.py -c user1 -c user2 <== two users, using localhost
 
 The primary `cart.py` program serves all web pages and updates abstracts located in the `abstracts` folder. Abstracts must follow an internal convention (more detail [here](https://nathanreitinger.github.io/CART/assumptions/)). `CART` also provides a variety of gamifications to make the coding process easier (e.g., confetti on every *n*<sup>th</sup> abstract voted on). 
 
+### Issues
+- macOS and ngrok may not play nice togher---possibly turn off airplay to free up a conflict (https://stackoverflow.com/a/70338426/9534147)
+
 ### Contributing
 
 See our contributing [guidelines](https://nathanreitinger.github.io/CART/CONTRIBUTING/), we'd love the help!
